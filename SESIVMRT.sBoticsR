@@ -1,8 +1,8 @@
 numero velPadrao = 90
 
-numero kP = 10
-numero kI = 0.00000001 
-numero kD = 0.65
+numero KP = 15
+numero KI = 0.000000000001 
+numero KD = 30
 
 numero P = 0
 numero I = 0
