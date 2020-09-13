@@ -81,7 +81,7 @@ tarefa PID{
 tarefa curvaEsquerda{
     escrever(1, "curva esquerda")
     frente(100)
-    esperar(600)
+    esperar(500)
     esquerda(300)
     esperar(650)
 
@@ -94,7 +94,7 @@ tarefa curvaEsquerda{
 tarefa  curvaDireita{
     escrever(1, "curva pra direita")
     frente(100)
-    esperar(600)
+    esperar(500)
     direita(300)
     esperar(650)
 
