@@ -112,6 +112,9 @@ inicio
         escrever(2, concatenar5("ultrassônicos: ", virartexto(arredondar(ultra(1))), virartexto(arredondar(ultra(2))), virartexto(arredondar(ultra(3))), ": ultrassônicos"))
         escrever(3, concatenar5(virartexto(luz(1)), virartexto(luz(2)), virartexto(luz(3)), virartexto(luz(4)), virartexto(luz(5))))
 
+        se(cor(1) != "PRETO" e cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") entao {
+            frente(80)
+        }
 
         se(ultra(3) <= 20) entao{
             escrever(1, "obstáculo")
