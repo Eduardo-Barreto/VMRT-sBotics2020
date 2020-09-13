@@ -1,0 +1,193 @@
+#arrumar obstaculo
+numero velPadrao = 140
+
+numero KP = 15
+numero KI = 0.000000000001 
+numero KD = 30
+
+numero P = 0
+numero I = 0
+numero D = 0
+
+numero ganho = 0
+
+numero ultimoErro = 0
+numero erro = 0
+
+numero motorB = 0
+numero motorC = 0
+
+numero angulo = 0
+
+tarefa ajuste{
+    #Primeiro Quadrante
+    se((direcao() > 0 ou direcao() < 360) e direcao() <= 45)entao{
+        angulo = direcao()
+        rotacionar(300, negativo(angulo))
+    }
+    #Segundo Quadrante
+    senao se(direcao() > 45 e direcao() <= 90)entao{
+        angulo = 90 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Terceiro Quadrante
+    senao se(direcao() > 90 e direcao() <= 135)entao{
+        angulo = 90 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Quarto Quadrante
+    senao se(direcao() > 135 e direcao() <= 180)entao{
+        angulo = 180 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Quinto Quadrante
+    senao se(direcao() > 180 e direcao() <= 225)entao{
+        angulo = 180 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Sexto Quadrante
+    senao se(direcao() > 225 e direcao() <= 270)entao{
+        angulo = 270 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Sétimo Quadrante
+    senao se(direcao() > 270 e direcao() <= 315) entao{
+        angulo = 270 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Oitava Quadrante
+    senao se(direcao() > 315 e direcao() <= 360)entao{
+        angulo = 360 - direcao()
+        rotacionar(300, angulo)
+    }
+} 
+
+tarefa PID{
+    erro = (luz(1)+luz(2)) - (luz(4)+luz(5))
+    escrevernumero(1, erro)
+    P = KP * erro
+    I = I + (erro * KI)
+    D = KD * (erro - ultimoErro)
+
+    ganho = P + I + D
+
+    ultimoErro = erro
+
+    motorB = velPadrao - ganho
+    motorC = velPadrao + ganho
+
+    mover(motorC, motorB)
+}
+
+tarefa curvaEsquerda{
+    escrever(1, "curva esquerda")
+    frente(100)
+    esperar(800)
+    esquerda(250)
+    esperar(650)
+
+    enquanto (cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") farei {
+        esquerda(250)
+    }
+    parar()
+    esperar(100)
+}
+tarefa  curvaDireita{
+    escrever(1, "curva pra direita")
+    frente(100)
+    esperar(800)
+    direita(250)
+    esperar(650)
+
+    enquanto (cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") farei {
+        direita(250)
+    }
+    parar()
+    esperar(100)
+}
+
+
+inicio
+velocidadeatuador(200)
+levantar(600)
+
+""" #region Piso"
+enquanto (ultra(3) > 30 ou ultra(4) > 30) farei {
+
+    escrever(2, concatenar5("ultrassônicos: ", virartexto(arredondar(ultra(1))), virartexto(arredondar(ultra(2))), virartexto(arredondar(ultra(3))), virartexto(arredondar(ultra(4)))))
+    escrever(3, concatenar5(virartexto(luz(1)), virartexto(luz(2)), virartexto(luz(3)), virartexto(luz(4)), virartexto(luz(5))))
+
+
+    se(ultra(1) < 20) entao{
+        escrever(1, "obstáculo")
+        ajuste()
+        rotacionar(300, 70)
+        enquanto (luz(3) >= 50) farei {
+            mover(300, negativo(290))
+        }
+        frente(300)
+        esperar(400)
+        rotacionar(300, 40)
+        ajuste()
+        enquanto (!toque(1)) farei {
+          tras(200)
+        }
+    
+    }
+
+
+    comentar("------------VERDE------------")
+
+    se (cor(2) == "VERDE" ou cor(1) == "VERDE") entao {
+        curvaDireita()
+    }
+
+    se (cor(4) == "VERDE" ou cor(5) == "VERDE") entao {
+        curvaEsquerda()
+    }
+
+    se (cor(1) != "BRANCO" e cor(2) != "BRANCO") entao {
+        curvaDireita()
+    }
+
+    se (cor(4) != "BRANCO" e cor(5) != "BRANCO") entao {
+        curvaEsquerda()
+    }
+
+    PID()
+
+}
+"""#endregion"""
+
+comentar("------------------RAMPA------------------")
+velocidadeatuador(100)
+baixar(1200)
+
+enquanto (ultra(3) < 30 e ultra(4) < 30) farei {
+    se (cor(1) == "PRETO" ou cor(2) == "PRETO") entao {
+        direita(200)
+    }
+
+    se (cor(4) == "PRETO" ou cor(5) == "PRETO") entao {
+        esquerda(200)
+    }
+    
+    se (cor(1) == "BRANCO" e cor(2) == "BRANCO" e cor(3) != "BRANCO" e cor(4) == "BRANCO" e cor(5) == "BRANCO") entao {
+        frente(60)
+    }
+
+comentar("GAP")
+    se (cor(1) == "BRANCO" e cor(2) == "BRANCO" e cor(3) == "BRANCO" e cor(4) == "BRANCO" e cor(5) == "BRANCO") entao {
+        frente(60)
+    }
+}
+
+comentar("------------------SALÃO------------------")
+enquanto (verdadeiro) farei {
+  frente(200)
+  esperar(200)
+  direita(200)
+  esperar(600)
+}
+
+fim
