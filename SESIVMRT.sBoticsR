@@ -1,6 +1,6 @@
 numero velPadrao = 90
 
-numero KP = 50
+numero KP = 30
 numero KI = 0.0005
 numero KD = 30
 
