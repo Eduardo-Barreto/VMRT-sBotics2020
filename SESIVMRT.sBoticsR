@@ -114,10 +114,10 @@ inicio
         #escrever(3, concatenar5(virartexto(luz(1)), virartexto(luz(2)), virartexto(luz(3)), virartexto(luz(4)), virartexto(luz(5))))
         escrever(3, concatenar5(cor(1), cor(2), cor(3), cor(4), cor(5)))
 
-        se(cor(1) != "PRETO" e cor(2) != "PRETO" e cor(4) != "PRETO" e cor(5) != "PRETO") entao {
+        se(cor(1) != "PRETO" e cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO" e cor(5) != "PRETO") entao {
             escrever(1, "GAP")
             frente(80)
-            esperar(100)
+            esperar(10)
         }
 
         se(ultra(3) <= 20) entao{
