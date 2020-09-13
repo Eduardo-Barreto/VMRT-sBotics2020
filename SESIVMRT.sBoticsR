@@ -111,7 +111,6 @@ inicio
 velocidadeatuador(200)
 levantar(600)
 
-""" #region Piso"
 enquanto (ultra(3) > 30 ou ultra(4) > 30) farei {
 
     escrever(2, concatenar5("ultrassônicos: ", virartexto(arredondar(ultra(1))), virartexto(arredondar(ultra(2))), virartexto(arredondar(ultra(3))), virartexto(arredondar(ultra(4)))))
@@ -157,7 +156,6 @@ enquanto (ultra(3) > 30 ou ultra(4) > 30) farei {
     PID()
 
 }
-"""#endregion"""
 
 comentar("------------------RAMPA------------------")
 velocidadeatuador(100)
