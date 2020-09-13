@@ -1,7 +1,7 @@
 numero velPadrao = 90
 
-numero KP = 15
-numero KI = 0.000000000001 
+numero KP = 50
+numero KI = 0.0005
 numero KD = 30
 
 numero P = 0
@@ -81,7 +81,7 @@ tarefa PID{
 tarefa curvaEsquerda{
     escrever(1, "curva esquerda")
     frente(100)
-    esperar(700)
+    esperar(600)
     esquerda(300)
     esperar(650)
 
@@ -94,7 +94,7 @@ tarefa curvaEsquerda{
 tarefa  curvaDireita{
     escrever(1, "curva pra direita")
     frente(100)
-    esperar(700)
+    esperar(600)
     direita(300)
     esperar(650)
 
