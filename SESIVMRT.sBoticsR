@@ -1,8 +1,8 @@
-numero velPadrao = 140
+numero velPadrao = 90
 
-numero KP = 15
-numero KI = 0.000000000001 
-numero KD = 30
+numero kP = 10
+numero kI = 0.00000001 
+numero kD = 0.65
 
 numero P = 0
 numero I = 0
@@ -81,12 +81,12 @@ tarefa PID{
 tarefa curvaEsquerda{
     escrever(1, "curva esquerda")
     frente(100)
-    esperar(800)
-    esquerda(250)
+    esperar(700)
+    esquerda(300)
     esperar(650)
 
     enquanto (cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") farei {
-        esquerda(250)
+        esquerda(300)
     }
     parar()
     esperar(100)
@@ -94,12 +94,12 @@ tarefa curvaEsquerda{
 tarefa  curvaDireita{
     escrever(1, "curva pra direita")
     frente(100)
-    esperar(800)
-    direita(250)
+    esperar(700)
+    direita(300)
     esperar(650)
 
     enquanto (cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") farei {
-        direita(250)
+        direita(300)
     }
     parar()
     esperar(100)
@@ -113,15 +113,15 @@ inicio
         escrever(3, concatenar5(virartexto(luz(1)), virartexto(luz(2)), virartexto(luz(3)), virartexto(luz(4)), virartexto(luz(5))))
 
 
-        se(ultra(1) < 20) entao{
+        se(ultra(3) <= 20) entao{
             escrever(1, "obstáculo")
             ajuste()
             rotacionar(300, 70)
             enquanto (luz(3) >= 50) farei {
-                mover(300, negativo(290))
+                mover(300, negativo(270))
             }
             frente(300)
-            esperar(400)
+            esperar(450)
             rotacionar(300, 40)
             ajuste()
             enquanto (!toque(1)) farei {
