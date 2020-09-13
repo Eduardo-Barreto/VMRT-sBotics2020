@@ -1,4 +1,3 @@
-#arrumar obstaculo
 numero velPadrao = 140
 
 numero KP = 15
@@ -108,84 +107,49 @@ tarefa  curvaDireita{
 
 
 inicio
-velocidadeatuador(200)
-levantar(600)
+    enquanto (verdadeiro) farei {
 
-enquanto (ultra(3) > 30 ou ultra(4) > 30) farei {
-
-    escrever(2, concatenar5("ultrassônicos: ", virartexto(arredondar(ultra(1))), virartexto(arredondar(ultra(2))), virartexto(arredondar(ultra(3))), virartexto(arredondar(ultra(4)))))
-    escrever(3, concatenar5(virartexto(luz(1)), virartexto(luz(2)), virartexto(luz(3)), virartexto(luz(4)), virartexto(luz(5))))
+        escrever(2, concatenar5("ultrassônicos: ", virartexto(arredondar(ultra(1))), virartexto(arredondar(ultra(2))), virartexto(arredondar(ultra(3))), virartexto(arredondar(ultra(4)))))
+        escrever(3, concatenar5(virartexto(luz(1)), virartexto(luz(2)), virartexto(luz(3)), virartexto(luz(4)), virartexto(luz(5))))
 
 
-    se(ultra(1) < 20) entao{
-        escrever(1, "obstáculo")
-        ajuste()
-        rotacionar(300, 70)
-        enquanto (luz(3) >= 50) farei {
-            mover(300, negativo(290))
+        se(ultra(1) < 20) entao{
+            escrever(1, "obstáculo")
+            ajuste()
+            rotacionar(300, 70)
+            enquanto (luz(3) >= 50) farei {
+                mover(300, negativo(290))
+            }
+            frente(300)
+            esperar(400)
+            rotacionar(300, 40)
+            ajuste()
+            enquanto (!toque(1)) farei {
+            tras(200)
+            }
+        
         }
-        frente(300)
-        esperar(400)
-        rotacionar(300, 40)
-        ajuste()
-        enquanto (!toque(1)) farei {
-          tras(200)
+
+
+        comentar("------------VERDE------------")
+
+        se (cor(2) == "VERDE" ou cor(1) == "VERDE") entao {
+            curvaDireita()
         }
-    
+
+        se (cor(4) == "VERDE" ou cor(5) == "VERDE") entao {
+            curvaEsquerda()
+        }
+
+        se (cor(1) != "BRANCO" e cor(2) != "BRANCO") entao {
+            curvaDireita()
+        }
+
+        se (cor(4) != "BRANCO" e cor(5) != "BRANCO") entao {
+            curvaEsquerda()
+        }
+
+        PID()
+
     }
-
-
-    comentar("------------VERDE------------")
-
-    se (cor(2) == "VERDE" ou cor(1) == "VERDE") entao {
-        curvaDireita()
-    }
-
-    se (cor(4) == "VERDE" ou cor(5) == "VERDE") entao {
-        curvaEsquerda()
-    }
-
-    se (cor(1) != "BRANCO" e cor(2) != "BRANCO") entao {
-        curvaDireita()
-    }
-
-    se (cor(4) != "BRANCO" e cor(5) != "BRANCO") entao {
-        curvaEsquerda()
-    }
-
-    PID()
-
-}
-
-comentar("------------------RAMPA------------------")
-velocidadeatuador(100)
-baixar(1200)
-
-enquanto (ultra(3) < 30 e ultra(4) < 30) farei {
-    se (cor(1) == "PRETO" ou cor(2) == "PRETO") entao {
-        direita(200)
-    }
-
-    se (cor(4) == "PRETO" ou cor(5) == "PRETO") entao {
-        esquerda(200)
-    }
-    
-    se (cor(1) == "BRANCO" e cor(2) == "BRANCO" e cor(3) != "BRANCO" e cor(4) == "BRANCO" e cor(5) == "BRANCO") entao {
-        frente(60)
-    }
-
-comentar("GAP")
-    se (cor(1) == "BRANCO" e cor(2) == "BRANCO" e cor(3) == "BRANCO" e cor(4) == "BRANCO" e cor(5) == "BRANCO") entao {
-        frente(60)
-    }
-}
-
-comentar("------------------SALÃO------------------")
-enquanto (verdadeiro) farei {
-  frente(200)
-  esperar(200)
-  direita(200)
-  esperar(600)
-}
-
 fim
