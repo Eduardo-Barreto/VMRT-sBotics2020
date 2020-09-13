@@ -109,7 +109,7 @@ tarefa  curvaDireita{
 inicio
     enquanto (verdadeiro) farei {
 
-        escrever(2, concatenar5("ultrassônicos: ", virartexto(arredondar(ultra(1))), virartexto(arredondar(ultra(2))), virartexto(arredondar(ultra(3))), virartexto(arredondar(ultra(4)))))
+        escrever(2, concatenar5("ultrassônicos: ", virartexto(arredondar(ultra(1))), virartexto(arredondar(ultra(2))), virartexto(arredondar(ultra(3))), ": ultrassônicos"))
         escrever(3, concatenar5(virartexto(luz(1)), virartexto(luz(2)), virartexto(luz(3)), virartexto(luz(4)), virartexto(luz(5))))
 
 
