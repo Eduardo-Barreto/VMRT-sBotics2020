@@ -113,6 +113,7 @@ inicio
         escrever(3, concatenar5(virartexto(luz(1)), virartexto(luz(2)), virartexto(luz(3)), virartexto(luz(4)), virartexto(luz(5))))
 
         se(cor(1) != "PRETO" e cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") entao {
+            escrever(1, "GAP")
             frente(80)
         }
 
