@@ -34,6 +34,19 @@ tarefa PID{
     mover(motorC, motorB)
 }
 
+tarefa curvaEsquerda{
+   frente(100)
+   esperar(500)
+   esquerda(1000)
+   esperar(150)
+
+   enquanto (cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") farei {
+      esquerda(1000)
+   }
+   parar()
+   esperar(100)
+}
+
 tarefa curvaDireita{
    frente(100)
    esperar(500)
@@ -48,5 +61,5 @@ tarefa curvaDireita{
 }
 
 inicio
-   curvaDireita()
+   curvaEsquerda()
 fim
