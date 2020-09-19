@@ -1,4 +1,4 @@
-numero velPadrao = 900
+numero velPadrao = 800
 
 numero KP = 35
 numero KI = 0.000001
@@ -61,5 +61,18 @@ tarefa curvaDireita{
 }
 
 inicio
-   curvaEsquerda()
+   velocidadeatuador(150)
+   levantar(600)
+   enquanto (verdadeiro) farei {
+      se (cor(1) == "PRETO" e cor(2) == "PRETO") entao {
+         curvaDireita()
+      }
+
+      se (cor(4) == "PRETO" e cor(5) == "PRETO") entao {
+         curvaEsquerda()
+      }
+      senao{
+         PID()
+      }
+   }
 fim
