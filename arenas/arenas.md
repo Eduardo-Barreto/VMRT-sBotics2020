@@ -35,3 +35,12 @@
 ```
 
 ![Imagem da arena 4 superior](/arenas/images/arena4_cima.png)
+
+## **Arena 5 (Testar Seguidor)**
+
+### Código da arena:
+```
+0000r0000,2,BoolMrcdr: true,BoolPrgso: true,0010c0000,1010c0090,1000c0270,2000c0180,2010c0000,3010c0090,3000c0270,4000c0180,4010c0000,5010c0180,5020c0090,4020r0090,3020r0090,2020r0090,1020c0000,Descricao: Arena teste de segue linha
+```
+
+![Imagem da arena 4 superior](/arenas/images/arena5_cima.png)
