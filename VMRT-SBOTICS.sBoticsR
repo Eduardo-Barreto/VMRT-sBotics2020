@@ -17,9 +17,7 @@ numero motorB = 0
 numero motorC = 0
 
 tarefa PID{
-    escrever(1, "Seguindo Linha")
     erro = (luz(1)+luz(2)) - (luz(4)+luz(5))
-    escrevernumero(1, erro)
     P = KP * erro
     I = I + (erro * KI)
     D = KD * (erro - ultimoErro)
