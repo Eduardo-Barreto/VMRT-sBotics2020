@@ -1,0 +1,43 @@
+numero velPadrao = 900
+
+numero KP = 35
+numero KI = 0.000001
+numero KD = 35
+
+numero P = 0
+numero I = 0
+numero D = 0
+
+numero ganho = 0
+
+numero ultimoErro = 0
+numero erro = 0
+
+numero motorB = 0
+numero motorC = 0
+
+tarefa PID{
+    escrever(1, "Seguindo Linha")
+    erro = (luz(1)+luz(2)) - (luz(4)+luz(5))
+    escrevernumero(1, erro)
+    P = KP * erro
+    I = I + (erro * KI)
+    D = KD * (erro - ultimoErro)
+
+    ganho = P + I + D
+
+    ultimoErro = erro
+
+    motorB = velPadrao - ganho
+    motorC = velPadrao + ganho
+
+    mover(motorC, motorB)
+}
+
+inicio
+   velocidadeatuador(150)
+   levantar(600)
+   enquanto (verdadeiro) farei {
+     PID()
+   }
+fim
