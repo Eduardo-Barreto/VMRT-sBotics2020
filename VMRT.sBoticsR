@@ -164,6 +164,14 @@ inicio
     limparconsole()
 
 #----------------RESGATE-----------------
+    velocidadeatuador(150)
+    levantar(600)
 
+    enquanto(verdadeiro)farei{
+        frente(300)
+        esperar(500)
+        esquerda(1000)
+        esperar(500)
+    }
 
 fim
