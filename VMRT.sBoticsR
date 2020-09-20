@@ -1,27 +1,76 @@
-tarefa curvaEsquerda{
-   frente(100)
-   esperar(500)
-   esquerda(1000)
-   esperar(300)
+numero angulo = 0
 
-   enquanto (cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") farei {
-      esquerda(1000)
-   }
-   parar()
-   esperar(100)
+tarefa ajuste{
+    #Primeiro Quadrante
+    se((direcao() > 0 ou direcao() < 360) e direcao() <= 45)entao{
+        angulo = direcao()
+        rotacionar(300, negativo(angulo))
+    }
+    #Segundo Quadrante
+    senao se(direcao() > 45 e direcao() <= 90)entao{
+        angulo = 90 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Terceiro Quadrante
+    senao se(direcao() > 90 e direcao() <= 135)entao{
+        angulo = 90 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Quarto Quadrante
+    senao se(direcao() > 135 e direcao() <= 180)entao{
+        angulo = 180 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Quinto Quadrante
+    senao se(direcao() > 180 e direcao() <= 225)entao{
+        angulo = 180 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Sexto Quadrante
+    senao se(direcao() > 225 e direcao() <= 270)entao{
+        angulo = 270 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Sétimo Quadrante
+    senao se(direcao() > 270 e direcao() <= 315) entao{
+        angulo = 270 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Oitava Quadrante
+    senao se(direcao() > 315 e direcao() <= 360)entao{
+        angulo = 360 - direcao()
+        rotacionar(300, angulo)
+    }
+}
+
+tarefa curvaEsquerda{
+    escrever(1, "Curva pra Esquerda")
+    frente(100)
+    esperar(500)
+    esquerda(1000)
+    esperar(300)
+
+    enquanto (cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") farei {
+        esquerda(1000)
+    }
+    parar()
+    esperar(100)
+    limparconsole()
 }
 
 tarefa curvaDireita{
-   frente(100)
-   esperar(500)
-   direita(1000)
-   esperar(300)
+    escrever(1, "Curva pra Direita")
+    frente(100)
+    esperar(500)
+    direita(1000)
+    esperar(300)
 
-   enquanto (cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") farei {
-      direita(1000)
-   }
-   parar()
-   esperar(100)
+    enquanto (cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") farei {
+        direita(1000)
+    }
+    parar()
+    esperar(100)
+    limparconsole()
 }
 
 inicio
@@ -31,6 +80,8 @@ inicio
     enquanto (verdadeiro) farei {
 
         se(ultra(3)<20) entao{
+            escrever(1, "Obstáculo")
+            ajuste()
             direita(1000)
             esperar(1840)
             frente(300)
@@ -42,11 +93,12 @@ inicio
             esquerda(1000)
             esperar(1840)
             enquanto (cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") farei {
-                frente(300)
+                frente(200)
             }
             frente(300)
-            esperar(300)
+            esperar(250)
             curvaDireita()
+            ajuste()
             enquanto (!toque(1)) farei {
               tras(250)
             }
@@ -54,30 +106,37 @@ inicio
 #--------------------SEGUIDOR-----------------
 
         se(cor(1) == "PRETO" ou cor(2) == "PRETO")entao{
+            escrever(1, "um tequinho pra direita")
             direita(1000)
         }
         se(cor(4) == "PRETO" ou cor(5) == "PRETO")entao{
+            escrever(1, "um tequinho pra esquerda")
             esquerda(1000)
         }
         se(cor(1) == "BRANCO" e cor(2) == "BRANCO" e cor(4) == "BRANCO" e cor(5) == "BRANCO")entao{
-            frente(150)
+            escrever(1, "continue a nadar, continue a nadar...")
+            frente(100)
         }
 
 #--------------------CURVAS--------------------
     #----------------VERDE----------------------
-        se (cor(1) == "VERDE" e cor(2) == "VERDE") entao {
+        se (cor(1) == "VERDE" ou cor(2) == "VERDE") entao {
+            escrever(2, "VERDE")
             curvaDireita()
         }
 
-        se (cor(4) == "VERDE" e cor(5) == "VERDE") entao {
+        se (cor(4) == "VERDE" ou cor(5) == "VERDE") entao {
+            escrever(2, "VERDE")
             curvaEsquerda()
         }
     #----------------PRETO---------------------
         se (cor(1) == "PRETO" e cor(2) == "PRETO") entao {
+            escrever(2, "PRETO")
             curvaDireita()
         }
 
         se (cor(4) == "PRETO" e cor(5) == "PRETO") entao {
+            escrever(2, "PRETO")
             curvaEsquerda()
         }
 
