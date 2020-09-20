@@ -1,0 +1,61 @@
+tarefa curvaEsquerda{
+   frente(100)
+   esperar(500)
+   esquerda(1000)
+   esperar(300)
+
+   enquanto (cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") farei {
+      esquerda(1000)
+   }
+   parar()
+   esperar(100)
+}
+
+tarefa curvaDireita{
+   frente(100)
+   esperar(500)
+   direita(1000)
+   esperar(300)
+
+   enquanto (cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") farei {
+      direita(1000)
+   }
+   parar()
+   esperar(100)
+}
+
+inicio
+    velocidadeatuador(150)
+    levantar(600)
+
+    enquanto (verdadeiro) farei {
+
+        se(cor(1) == "PRETO" ou cor(2) == "PRETO")entao{
+            direita(1000)
+        }
+        se(cor(4) == "PRETO" ou cor(5) == "PRETO")entao{
+            esquerda(1000)
+        }
+        se(cor(1) == "BRANCO" e cor(2) == "BRANCO" e cor(4) == "BRANCO" e cor(5) == "BRANCO")entao{
+            frente(150)
+        }
+
+        se (cor(1) == "VERDE" e cor(2) == "VERDE") entao {
+            curvaDireita()
+        }
+
+        se (cor(4) == "VERDE" e cor(5) == "VERDE") entao {
+            curvaEsquerda()
+        }
+
+        se (cor(1) == "PRETO" e cor(2) == "PRETO") entao {
+            curvaDireita()
+        }
+
+        se (cor(4) == "PRETO" e cor(5) == "PRETO") entao {
+            curvaEsquerda()
+        }
+
+    }
+
+fim
