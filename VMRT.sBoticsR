@@ -30,6 +30,29 @@ inicio
 
     enquanto (verdadeiro) farei {
 
+        se(ultra(3)<20) entao{
+            direita(1000)
+            esperar(1840)
+            frente(300)
+            esperar(600)
+            esquerda(1000)
+            esperar(1840)
+            frente(300)
+            esperar(600)
+            esquerda(1000)
+            esperar(1840)
+            enquanto (cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") farei {
+                frente(300)
+            }
+            frente(300)
+            esperar(300)
+            curvaDireita()
+            enquanto (!toque(1)) farei {
+              tras(250)
+            }
+        }
+#--------------------SEGUIDOR-----------------
+
         se(cor(1) == "PRETO" ou cor(2) == "PRETO")entao{
             direita(1000)
         }
@@ -40,6 +63,8 @@ inicio
             frente(150)
         }
 
+#--------------------CURVAS--------------------
+    #----------------VERDE----------------------
         se (cor(1) == "VERDE" e cor(2) == "VERDE") entao {
             curvaDireita()
         }
@@ -47,7 +72,7 @@ inicio
         se (cor(4) == "VERDE" e cor(5) == "VERDE") entao {
             curvaEsquerda()
         }
-
+    #----------------PRETO---------------------
         se (cor(1) == "PRETO" e cor(2) == "PRETO") entao {
             curvaDireita()
         }
