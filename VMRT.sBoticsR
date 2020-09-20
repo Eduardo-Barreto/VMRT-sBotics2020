@@ -73,13 +73,32 @@ tarefa curvaDireita{
     limparconsole()
 }
 
+tarefa seguirLinha{
+    se(cor(1) == "PRETO" ou cor(2) == "PRETO")entao{
+        escrever(1, "um tequinho pra direita")
+        direita(1000)
+    }
+    se(cor(4) == "PRETO" ou cor(5) == "PRETO")entao{
+        escrever(1, "um tequinho pra esquerda")
+        esquerda(1000)
+    }
+    se(cor(1) == "BRANCO" e cor(2) == "BRANCO" e cor(4) == "BRANCO" e cor(5) == "BRANCO")entao{
+        escrever(1, "continue a nadar, continue a nadar...")
+        frente(100)
+    }
+}
+
 inicio
     velocidadeatuador(150)
     levantar(600)
 
-    enquanto (verdadeiro) farei {
-
+#--------------------PISO--------------------
+    enquanto ((ultra(2) > 20) e inclinacao()<340 ou inclinacao()>350) farei {
+        
         se(ultra(3)<20) entao{
+            se(ultra(1)>30 e ultra(1)<70)entao{
+                interromper()
+            }
             escrever(1, "Obstáculo")
             ajuste()
             direita(1000)
@@ -103,23 +122,10 @@ inicio
               tras(250)
             }
         }
-#--------------------SEGUIDOR-----------------
-
-        se(cor(1) == "PRETO" ou cor(2) == "PRETO")entao{
-            escrever(1, "um tequinho pra direita")
-            direita(1000)
-        }
-        se(cor(4) == "PRETO" ou cor(5) == "PRETO")entao{
-            escrever(1, "um tequinho pra esquerda")
-            esquerda(1000)
-        }
-        se(cor(1) == "BRANCO" e cor(2) == "BRANCO" e cor(4) == "BRANCO" e cor(5) == "BRANCO")entao{
-            escrever(1, "continue a nadar, continue a nadar...")
-            frente(100)
-        }
-
-#--------------------CURVAS--------------------
-    #----------------VERDE----------------------
+    #--------------------SEGUIDOR-----------------
+        seguirLinha()
+    #------------------CURVAS-------------------
+    #------------------VERDE---------------------
         se (cor(1) == "VERDE" ou cor(2) == "VERDE") entao {
             escrever(2, "VERDE")
             curvaDireita()
@@ -129,7 +135,7 @@ inicio
             escrever(2, "VERDE")
             curvaEsquerda()
         }
-    #----------------PRETO---------------------
+    #-------------------PRETO---------------------
         se (cor(1) == "PRETO" e cor(2) == "PRETO") entao {
             escrever(2, "PRETO")
             curvaDireita()
@@ -141,5 +147,23 @@ inicio
         }
 
     }
+
+#------------------RAMPA------------------
+    limparconsole()
+    escrever(3, "subindo rampa")
+    velocidadeatuador(150)
+    baixar(400)
+
+    enquanto (ultra(2)>20) farei {
+        seguirLinha()
+    }
+    enquanto (ultra(2)<20) farei {
+        seguirLinha()
+    }
+    parar()
+    limparconsole()
+
+#----------------RESGATE-----------------
+
 
 fim
