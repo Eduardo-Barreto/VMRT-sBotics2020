@@ -2,9 +2,9 @@ numero angulo = 0
 booleano verCurva = falso
 
 tarefa verificaCurva{
-    frente(150)
-    esperar(350)
-    se(cor(2) == "BRANCO" e cor(3) == "BRANCO" e cor(4) == "BRANCO")entao{
+    frente(300)
+    esperar(300)
+    se(luz(2) > 70 e luz(3) > 70 e luz(4) > 70)entao{
         verCurva = verdadeiro
     }
     senao{
@@ -60,17 +60,14 @@ tarefa curvaEsquerda{
     frente(100)
     esperar(500)
     esquerda(1000)
-    esperar(300)
+    esperar(600)
 
     zerartemporizador()
-    enquanto (cor(3) != "PRETO") farei {
-        se(temporizador() > 3420)entao{
-            interromper()
-        }
+    enquanto (cor(3) != "PRETO" e temporizador() < 2420) farei {
         esquerda(1000)
     }
-    parar()
-    esperar(100)
+    tras(100)
+    esperar(200)
     limparconsole()
 }
 
@@ -79,17 +76,14 @@ tarefa curvaDireita{
     frente(100)
     esperar(500)
     direita(1000)
-    esperar(300)
+    esperar(600)
 
     zerartemporizador()
-    enquanto (cor(3) != "PRETO") farei {
-        se(temporizador() > 3420)entao{
-            interromper()
-        }
+    enquanto (cor(3) != "PRETO" e temporizador() < 2420) farei {
         direita(1000)
     }
-    parar()
-    esperar(100)
+    tras(100)
+    esperar(200)
     limparconsole()
 }
 
@@ -113,7 +107,8 @@ inicio
     levantar(600)
 
 #--------------------PISO--------------------
-    enquanto ((ultra(2) > 20) e inclinacao()<340 ou inclinacao()>350) farei {
+    enquanto ((ultra(2) > 20) e (inclinacao()<320 ou inclinacao()>342)) farei {
+        escrever(3, "piso")
         
         se(ultra(3)<20) entao{
             se(ultra(1)>30 e ultra(1)<70)entao{
@@ -148,22 +143,31 @@ inicio
         se(cor(1) == "PRETO" e cor(2) == "PRETO" e cor(4) == "PRETO" e cor(5) == "PRETO")entao{
             escrever(1, "Encruzilhada")
             frente(150)
-            esperar(350)
+            esperar(400)
         }
 
     #------------------CURVAS-------------------
     #------------------VERDE---------------------
+        
+        se (cor(2) == "VERDE" e cor(4) == "VERDE") entao {
+            escrever(2, "beco")
+            frente(150)
+            esperar(400)
+            curvaEsquerda()
+            curvaEsquerda()
+        }
+
         se (cor(1) == "VERDE" ou cor(2) == "VERDE") entao {
             escrever(2, "VERDE")
             frente(150)
-            esperar(350)
+            esperar(400)
             curvaDireita()
         }
 
         se (cor(4) == "VERDE" ou cor(5) == "VERDE") entao {
             escrever(2, "VERDE")
             frente(150)
-            esperar(350)
+            esperar(400)
             curvaEsquerda()
         }
     #-------------------PRETO---------------------
@@ -183,17 +187,18 @@ inicio
             }
         }
 
+
     }
 
 #------------------RAMPA------------------
     limparconsole()
     escrever(3, "subindo rampa")
-    velocidadeatuador(150)
-    baixar(400)
+    baixar(450)
 
     enquanto (ultra(2)>20) farei {
         seguirLinha()
     }
+    baixar(150)
     enquanto (ultra(2)<20) farei {
         seguirLinha()
     }
@@ -201,7 +206,6 @@ inicio
     limparconsole()
 
 #----------------RESGATE-----------------
-    velocidadeatuador(150)
     baixar(200)
     frente(300)
     esperar(300)
@@ -216,7 +220,7 @@ inicio
         baixar(600)
         esperar(2500)
 
-        direita(1000)
+        esquerda(1000)
         esperar(3420)
         levantar(600)
     }
