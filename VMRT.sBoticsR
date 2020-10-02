@@ -1,4 +1,16 @@
 numero angulo = 0
+booleano verCurva = falso
+
+tarefa verificaCurva{
+    frente(150)
+    esperar(350)
+    se(cor(2) == "BRANCO" e cor(3) == "BRANCO" e cor(4) == "BRANCO")entao{
+        verCurva = verdadeiro
+    }
+    senao{
+        verCurva = falso
+    }
+}
 
 tarefa ajuste{
     #Primeiro Quadrante
@@ -50,7 +62,11 @@ tarefa curvaEsquerda{
     esquerda(1000)
     esperar(300)
 
-    enquanto (cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") farei {
+    zerartemporizador()
+    enquanto (cor(3) != "PRETO") farei {
+        se(temporizador() > 3420)entao{
+            interromper()
+        }
         esquerda(1000)
     }
     parar()
@@ -65,7 +81,11 @@ tarefa curvaDireita{
     direita(1000)
     esperar(300)
 
-    enquanto (cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") farei {
+    zerartemporizador()
+    enquanto (cor(3) != "PRETO") farei {
+        se(temporizador() > 3420)entao{
+            interromper()
+        }
         direita(1000)
     }
     parar()
@@ -124,26 +144,43 @@ inicio
         }
     #--------------------SEGUIDOR-----------------
         seguirLinha()
+
+        se(cor(1) == "PRETO" e cor(2) == "PRETO" e cor(4) == "PRETO" e cor(5) == "PRETO")entao{
+            escrever(1, "Encruzilhada")
+            frente(150)
+            esperar(350)
+        }
+
     #------------------CURVAS-------------------
     #------------------VERDE---------------------
         se (cor(1) == "VERDE" ou cor(2) == "VERDE") entao {
             escrever(2, "VERDE")
+            frente(150)
+            esperar(350)
             curvaDireita()
         }
 
         se (cor(4) == "VERDE" ou cor(5) == "VERDE") entao {
             escrever(2, "VERDE")
+            frente(150)
+            esperar(350)
             curvaEsquerda()
         }
     #-------------------PRETO---------------------
         se (cor(1) == "PRETO" e cor(2) == "PRETO") entao {
             escrever(2, "PRETO")
-            curvaDireita()
+            verificaCurva()
+            se (verCurva) entao {
+                curvaDireita()
+            }
         }
 
         se (cor(4) == "PRETO" e cor(5) == "PRETO") entao {
             escrever(2, "PRETO")
-            curvaEsquerda()
+            verificaCurva()
+            se (verCurva) entao {
+                curvaEsquerda()
+            }
         }
 
     }
@@ -165,13 +202,23 @@ inicio
 
 #----------------RESGATE-----------------
     velocidadeatuador(150)
-    levantar(600)
+    baixar(200)
+    frente(300)
+    esperar(300)
+
+    direita(1000)
+    esperar(3420)
+
+    zerartemporizador()
 
     enquanto(verdadeiro)farei{
         frente(300)
-        esperar(500)
-        esquerda(1000)
-        esperar(500)
+        baixar(600)
+        esperar(2500)
+
+        direita(1000)
+        esperar(3420)
+        levantar(600)
     }
 
 fim
