@@ -5,7 +5,7 @@
 	tarefa curvaEsquerda{
 	    escrever(1, "Curva pra Esquerda")
 	    frente(100)
-	    esperar(500)
+	    esperar(150)
 	    esquerda(1000)
 	    esperar(600)
 	
@@ -21,7 +21,7 @@
 	tarefa curvaDireita{
 	    escrever(1, "Curva pra Direita")
 	    frente(100)
-	    esperar(500)
+	    esperar(150)
 	    direita(1000)
 	    esperar(600)
 	
@@ -151,14 +151,14 @@
 	        se (cor(1) == "VERDE" ou cor(2) == "VERDE") entao {
 	            escrever(2, "VERDE")
 	            frente(150)
-	            esperar(400)
+	            esperar(750)
 	            curvaDireita()
 	        }
 	
 	        se (cor(4) == "VERDE" ou cor(5) == "VERDE") entao {
 	            escrever(2, "VERDE")
 	            frente(150)
-	            esperar(400)
+	            esperar(750)
 	            curvaEsquerda()
 	        }
 	        se (cor(1) == "PRETO" e cor(2) == "PRETO") entao {

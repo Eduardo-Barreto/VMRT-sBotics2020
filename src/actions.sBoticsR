@@ -4,7 +4,7 @@ booleano verCurva = falso
 tarefa curvaEsquerda{
     escrever(1, "Curva pra Esquerda")
     frente(100)
-    esperar(500)
+    esperar(150)
     esquerda(1000)
     esperar(600)
 
@@ -20,7 +20,7 @@ tarefa curvaEsquerda{
 tarefa curvaDireita{
     escrever(1, "Curva pra Direita")
     frente(100)
-    esperar(500)
+    esperar(150)
     direita(1000)
     esperar(600)
 
