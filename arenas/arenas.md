@@ -13,7 +13,7 @@
 
 ### Código da arena:
 ```
-0000r0000,0010c5000,1010c4180,1020c7000,2020c2090,2010r4000,2000c2270,3000r4090,4000c2180,5020c5180,3,TempoMxmo: 3,BoolTpFim: true,BoolEndCd: false,RobosPerm: 111111,BoolShowM: true,Descricao: Arena gerada no padrão OBR.,BoolMrcdr: true,BoolTSala: 2,BoolPrgso: false,BoolSlnha: false,0020c6090,4010c2090,3010c3270,3020c3000,4020rm090,5010r3180,5000c6270,VtmsVivas: 4,VtmsMrtas: 3,HoraDoDia: 20
+0000r0000,0010c5000,1010c4180,1020c7000,2020c2090,2010r4000,2000c2270,3000r4090,4000c2180,5020c5180,3,TempoMxmo: 3,BoolTpFim: true,BoolEndCd: false,RobosPerm: 111111,BoolShowM: true,Descricao: Arena gerada no padrão OBR.,BoolTSala: 2,BoolPrgso: false,BoolSlnha: false,0020c6090,4010c2090,3010c3270,3020c3000,4020rm090,5010r3180,5000c6270,VtmsVivas: 4,VtmsMrtas: 3,HoraDoDia: 20,BoolMrcdr: false
 ```
 
 ![Imagem da arena 2 superior](/arenas/images/arena2_cima.png)
@@ -41,15 +41,6 @@
 ### Código da arena:
 ```
 0000r0000,2,0010c0000,1010c0090,1000c0270,2000c0180,2010c0000,3010c0090,3000c0270,4000c0180,4010c0000,5010c0180,5020c0090,4020r0090,3020r0090,2020r0090,1020c0000,Descricao: Arena teste de segue linha,BoolMrcdr: false,BoolShowM: false,BoolPrgso: false
-```
-
-![Imagem da arena 4 superior](/arenas/images/arena5_cima.png)
-
-## **Arena 6**
-
-### Código da arena:
-```
-0000r0000,0010r5000,0020c4000,1020c3090,1010r0000,1000c4270,2000r3270,3000c2180,3010c0090,2010c3270,2020c2000,3020r0270,4020c4090,4010r6000,4000c3270,5000c2180,5010r0000,5020r6180,3,TempoMxmo: 3,BoolTpFim: true,BoolEndCd: false,RobosPerm: 111111,BoolShowM: true,BoolTSala: 2,Descricao: Arena gerada no padrão OBR.,BoolPrgso: true,BoolSlnha: false,VtmsVivas: 5,VtmsMrtas: 5,HoraDoDia: 21,BoolMrcdr: false
 ```
 
 ![Imagem da arena 4 superior](/arenas/images/arena5_cima.png)
