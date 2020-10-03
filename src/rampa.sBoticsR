@@ -1,0 +1,13 @@
+    limparconsole()
+    escrever(3, "subindo rampa")
+    baixar(450)
+
+    enquanto (ultra(2)>20) farei {
+        seguirLinha()
+    }
+    baixar(150)
+    enquanto (ultra(2)<20) farei {
+        seguirLinha()
+    }
+    parar()
+    limparconsole()

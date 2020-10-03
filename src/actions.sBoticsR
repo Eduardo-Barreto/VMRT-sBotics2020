@@ -1,0 +1,103 @@
+numero angulo = 0
+booleano verCurva = falso
+
+tarefa curvaEsquerda{
+    escrever(1, "Curva pra Esquerda")
+    frente(100)
+    esperar(500)
+    esquerda(1000)
+    esperar(600)
+
+    zerartemporizador()
+    enquanto (cor(3) != "PRETO" e temporizador() < 2420) farei {
+        esquerda(1000)
+    }
+    tras(100)
+    esperar(200)
+    limparconsole()
+}
+
+tarefa curvaDireita{
+    escrever(1, "Curva pra Direita")
+    frente(100)
+    esperar(500)
+    direita(1000)
+    esperar(600)
+
+    zerartemporizador()
+    enquanto (cor(3) != "PRETO" e temporizador() < 2420) farei {
+        direita(1000)
+    }
+    tras(100)
+    esperar(200)
+    limparconsole()
+}
+
+tarefa seguirLinha{
+    se(cor(1) == "PRETO" ou cor(2) == "PRETO")entao{
+        escrever(1, "um tequinho pra direita")
+        direita(1000)
+    }
+    se(cor(4) == "PRETO" ou cor(5) == "PRETO")entao{
+        escrever(1, "um tequinho pra esquerda")
+        esquerda(1000)
+    }
+    se(cor(1) == "BRANCO" e cor(2) == "BRANCO" e cor(4) == "BRANCO" e cor(5) == "BRANCO")entao{
+        escrever(1, "continue a nadar, continue a nadar...")
+        frente(100)
+    }
+}
+
+tarefa verificaCurva{
+    frente(100)
+    esperar(500)
+    se(luz(2) > 50 e luz(3) > 50 e luz(4) > 50)entao{
+        verCurva = verdadeiro
+    }
+    senao{
+        verCurva = falso
+    }
+}
+
+tarefa ajuste{
+    #Primeiro Quadrante
+    se((direcao() > 0 ou direcao() < 360) e direcao() <= 45)entao{
+        angulo = direcao()
+        rotacionar(300, negativo(angulo))
+    }
+    #Segundo Quadrante
+    senao se(direcao() > 45 e direcao() <= 90)entao{
+        angulo = 90 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Terceiro Quadrante
+    senao se(direcao() > 90 e direcao() <= 135)entao{
+        angulo = 90 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Quarto Quadrante
+    senao se(direcao() > 135 e direcao() <= 180)entao{
+        angulo = 180 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Quinto Quadrante
+    senao se(direcao() > 180 e direcao() <= 225)entao{
+        angulo = 180 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Sexto Quadrante
+    senao se(direcao() > 225 e direcao() <= 270)entao{
+        angulo = 270 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Sétimo Quadrante
+    senao se(direcao() > 270 e direcao() <= 315) entao{
+        angulo = 270 - direcao()
+        rotacionar(300, angulo)
+    }
+    #Oitava Quadrante
+    senao se(direcao() > 315 e direcao() <= 360)entao{
+        angulo = 360 - direcao()
+        rotacionar(300, angulo)
+    }
+}

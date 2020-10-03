@@ -1,0 +1,87 @@
+inicio
+velocidadeatuador(150)
+levantar(600)
+
+#--------------------PISO--------------------
+    enquanto ((ultra(2) > 20) e (inclinacao()<320 ou inclinacao()>342)) farei {
+        escrever(3, "piso")
+        
+        se(ultra(3)<20) entao{
+            se(ultra(1)>30 e ultra(1)<70)entao{
+                interromper()
+            }
+            escrever(1, "Obstáculo")
+            ajuste()
+            direita(1000)
+            esperar(1840)
+            frente(300)
+            esperar(600)
+            esquerda(1000)
+            esperar(1840)
+            frente(300)
+            esperar(600)
+            esquerda(1000)
+            esperar(1840)
+            enquanto (cor(2) != "PRETO" e cor(3) != "PRETO" e cor(4) != "PRETO") farei {
+                frente(200)
+            }
+            frente(300)
+            esperar(250)
+            curvaDireita()
+            ajuste()
+            enquanto (!toque(1)) farei {
+              tras(250)
+            }
+        }
+    #--------------------SEGUIDOR-----------------
+        seguirLinha()
+
+        se(cor(1) == "PRETO" e cor(2) == "PRETO" e cor(4) == "PRETO" e cor(5) == "PRETO")entao{
+            escrever(1, "Encruzilhada")
+            frente(150)
+            esperar(400)
+        }
+
+    #------------------CURVAS-------------------
+    #------------------VERDE---------------------
+        
+        se (cor(2) == "VERDE" e cor(4) == "VERDE") entao {
+            escrever(2, "beco")
+            frente(150)
+            esperar(400)
+            curvaEsquerda()
+            curvaEsquerda()
+        }
+
+        se (cor(1) == "VERDE" ou cor(2) == "VERDE") entao {
+            escrever(2, "VERDE")
+            frente(150)
+            esperar(400)
+            curvaDireita()
+        }
+
+        se (cor(4) == "VERDE" ou cor(5) == "VERDE") entao {
+            escrever(2, "VERDE")
+            frente(150)
+            esperar(400)
+            curvaEsquerda()
+        }
+    #-------------------PRETO---------------------
+        se (cor(1) == "PRETO" e cor(2) == "PRETO") entao {
+            escrever(2, "PRETO")
+            verificaCurva()
+            se (verCurva) entao {
+                curvaDireita()
+            }
+        }
+
+        se (cor(4) == "PRETO" e cor(5) == "PRETO") entao {
+            escrever(2, "PRETO")
+            verificaCurva()
+            se (verCurva) entao {
+                curvaEsquerda()
+            }
+        }
+
+
+    }
