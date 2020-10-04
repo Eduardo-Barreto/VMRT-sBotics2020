@@ -10,7 +10,7 @@ while True:
     if 'output' not in os.listdir('./'):
         os.mkdir('./output')
 
-    out = open('./output/main.sBoticsR', 'w')
+    out = open('./output/VMRT.sBoticsR', 'w')
     
     os.system('cls')
 
