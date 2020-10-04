@@ -1,0 +1,10 @@
+escrever(3, "resgate")
+levantar(600)
+
+frente(300)
+esperar(500)
+
+direita(1000)
+esperar(1710)
+
+frenterotacao(300, 60)

@@ -1,5 +1,8 @@
 numero angulo = 0
 booleano verCurva = falso
+numero contador = 0
+
+numero triangulo = 0
 
 tarefa curvaEsquerda{
     escrever(1, "Curva pra Esquerda")
