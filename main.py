@@ -10,7 +10,7 @@ while True:
     if 'output' not in os.listdir('./'):
         os.mkdir('./output')
 
-    out = open('./output/VMRT.sBoticsR', 'w')
+    out = open('./output/main.sBoticsR', 'w')
     
     os.system('cls')
 
@@ -28,10 +28,10 @@ while True:
             
         else:
             print('-'*20, 'Arquivo inválido:', arquivo,'-'*20, end='')
-        print('\n','-'*20, 'fim do arquivo:', arquivo[:arquivo.find('.sBoticsR')], '-'*20)
+        print('\n','-'*20, 'Arquivo', arquivo[:arquivo.find('.sBoticsR')], 'compilado com sucesso', '-'*20)
 
     out.write('fim\n')
     out.close()
-
+    print('\nDigite compilar para compilar novamente\n')
     while input() != 'compilar':
         pass
