@@ -10,9 +10,10 @@ frenterotacao(170, 60)
 
 frenterotacao(170, 50)
 
+velocidadeatuador(50)
+levantar(600)
+
 se(temvitima())entao{
-    velocidadeatuador(50)
-    levantar(600)
     girarcima(1000)
     frenterotacao(170, 15)
 }
@@ -31,9 +32,15 @@ se (cor(6) == "PRETO") entao {
     }
 }
 
-trasrotacao(170, 50)
-baixar(600)
-girarbaixo(1000)
+trasrotacao(170, 45)
+
+se(anguloatuador() > 15)entao{
+    baixar(600)
+}
+se(angulogiroatuador() != 0)entao{
+    girarbaixo(1000)
+}
+
 
 direita(1000)
 esperar(3420)

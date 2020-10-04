@@ -109,7 +109,13 @@
 	        
 	        se(ultra(3)<20) entao{
 	            se(ultra(1)>30 e ultra(1)<70)entao{
-	                interromper()
+	                frenterotacao(150, 15)
+	                se(ultra(2)<30)entao{
+	                    interromper()
+	                }
+	                senao{
+	                    trasrotacao(150, 15)                
+	                }
 	            }
 	            escrever(1, "Obstáculo")
 	            ajuste()
@@ -134,7 +140,6 @@
 	              tras(250)
 	            }
 	        }
-	        seguirLinha()
 	
 	        se(cor(1) == "PRETO" e cor(2) == "PRETO" e cor(4) == "PRETO" e cor(5) == "PRETO")entao{
 	            escrever(1, "Encruzilhada")
@@ -180,6 +185,7 @@
 	            }
 	        }
 	
+	        seguirLinha()
 	
 	    }
 
@@ -235,9 +241,85 @@
 	    }
 	}
 	
-	trasrotacao(170, 50)
-	baixar(600)
-	girarbaixo(1000)
+	trasrotacao(170, 45)
+	
+	se(anguloatuador() > 15)entao{
+	    baixar(600)
+	}
+	se(angulogiroatuador() != 0)entao{
+	    girarbaixo(1000)
+	}
+	
+	
+	direita(1000)
+	esperar(3420)
+	
+	frenterotacao(170, 50)
+	
+	se(temvitima())entao{
+	    velocidadeatuador(50)
+	    levantar(600)
+	    girarcima(1000)
+	    frenterotacao(170, 15)
+	}
+	
+	se (cor(6) == "PRETO") entao {
+	
+	    triangulo = direcao()
+	    
+	    se(temvitima())entao{
+	        repita 3 vezes {
+	                frente(300)
+	                esperar(100)
+	                tras(300)
+	                esperar(100)
+	        }
+	    }
+	}
+	
+	trasrotacao(170, 45)
+	
+	se(anguloatuador() > 15)entao{
+	    baixar(600)
+	}
+	se(angulogiroatuador() != 0)entao{
+	    girarbaixo(1000)
+	}
+	
+	direita(1000)
+	esperar(6840)
+	
+	frenterotacao(170, 50)
+	
+	se(temvitima())entao{
+	    velocidadeatuador(50)
+	    levantar(600)
+	    girarcima(1000)
+	    frenterotacao(170, 15)
+	}
+	
+	se (cor(6) == "PRETO") entao {
+	
+	    triangulo = direcao()
+	    
+	    se(temvitima())entao{
+	        repita 3 vezes {
+	                frente(300)
+	                esperar(100)
+	                tras(300)
+	                esperar(100)
+	        }
+	    }
+	}
+	
+	trasrotacao(170, 45)
+	
+	se(anguloatuador() > 15)entao{
+	    baixar(600)
+	}
+	se(angulogiroatuador() != 0)entao{
+	    girarbaixo(1000)
+	}
 	
 	direita(1000)
 	esperar(3420)
