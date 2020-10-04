@@ -43,4 +43,24 @@
 0000r0000,2,0010c0000,1010c0090,1000c0270,2000c0180,2010c0000,3010c0090,3000c0270,4000c0180,4010c0000,5010c0180,5020c0090,4020r0090,3020r0090,2020r0090,1020c0000,Descricao: Arena teste de segue linha,BoolMrcdr: false,BoolShowM: false,BoolPrgso: false
 ```
 
-![Imagem da arena 4 superior](/arenas/images/arena5_cima.png)
+![Imagem da arena 5 superior](/arenas/images/arena5_cima.png)
+---
+
+## **Arena 6**
+
+### Código da arena:
+```
+0000r0000,2,TempoMxmo: 3,BoolEndCd: false,RobosPerm: 111111,Descricao: Arena gerada no padrão OBR.,0010r4000,0020c4000,1020c7000,2010r4270,2020r0090,3020ce090,3000c5270,BoolShowM: false,BoolTpFim: false,BoolPrgso: false,BoolMrcdr: false,BoolTSala: 2,BoolSlnha: false,VtmsVivas: 3,VtmsMrtas: 3,HoraDoDia: 21,1010c5000,2000rx270,1000c3270,3010c6180,4000rS270,5000c0180,5010r4180,5020r0180
+```
+
+![Imagem da arena 6 superior](/arenas/images/arena6_cima.png)
+---
+
+## **Arena 7**
+
+### Código da arena:
+```
+0000r0000,0010r}000,1010r4180,1000c5270,2000r}090,3000cl180,3010ce000,4010ce180,4020c3000,5020cf180,6,HoraDoDia: 18,VtmsVivas: 2,VtmsMrtas: 2,TempoMxmo: 3,BoolTpFim: true,RobosPerm: 111111,BoolShowM: true,Descricao: Arena gerada no padrão OBR.,BoolPrgso: true,BoolTSala: 2,BoolSlnha: false,0020cl000,1020c0090,BoolEndCd: true,BoolMrcdr: false
+```
+
+![Imagem da arena 7 superior](/arenas/images/arena7_cima.png)
