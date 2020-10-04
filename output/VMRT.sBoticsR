@@ -203,7 +203,6 @@
 
 #region resgate
 	escrever(3, "resgate")
-	levantar(600)
 	
 	frente(300)
 	esperar(500)
@@ -211,8 +210,37 @@
 	direita(1000)
 	esperar(1710)
 	
-	frenterotacao(300, 60)
-
+	frenterotacao(170, 60)
+	
+	frenterotacao(170, 50)
+	
+	se(temvitima())entao{
+	    velocidadeatuador(50)
+	    levantar(600)
+	    girarcima(1000)
+	    frenterotacao(170, 15)
+	}
+	
+	se (cor(6) == "PRETO") entao {
+	
+	    triangulo = direcao()
+	    
+	    se(temvitima())entao{
+	        repita 3 vezes {
+	                frente(300)
+	                esperar(100)
+	                tras(300)
+	                esperar(100)
+	        }
+	    }
+	}
+	
+	trasrotacao(170, 50)
+	baixar(600)
+	girarbaixo(1000)
+	
+	direita(1000)
+	esperar(3420)
 #endregion
 
 fim
