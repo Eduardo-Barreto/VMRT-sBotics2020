@@ -1,6 +1,6 @@
     limparconsole()
     escrever(3, "subindo rampa")
-    baixar(450)
+    baixar(500)
 
     enquanto (ultra(2)>20) farei {
         seguirLinha()
