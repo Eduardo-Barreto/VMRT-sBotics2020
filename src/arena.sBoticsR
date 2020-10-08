@@ -32,7 +32,7 @@ levantar(600)
                 frente(200)
             }
             frente(300)
-            esperar(250)
+            esperar(350)
             curvaDireita()
             ajuste()
             enquanto (!toque(1)) farei {
