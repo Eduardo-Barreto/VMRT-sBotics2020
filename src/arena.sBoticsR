@@ -1,13 +1,16 @@
 inicio
+pintar()
 velocidadeatuador(150)
+girarcima(600)
 levantar(600)
 
 #--------------------PISO--------------------
-    enquanto ((ultra(2) > 20) e (inclinacao()<320 ou inclinacao()>342)) farei {
+    enquanto ((ultra(2) > 20) ou (inclinacao()<320 ou inclinacao()>342)) farei {
         escrever(3, "piso")
         
         se(ultra(3)<20) entao{
             se(ultra(1)>30 e ultra(1)<70)entao{
+            escrever(2, "Obstáculo")
                 frenterotacao(150, 15)
                 se(ultra(2)<30)entao{
                     interromper()
@@ -16,7 +19,6 @@ levantar(600)
                     trasrotacao(150, 15)                
                 }
             }
-            escrever(1, "Obstáculo")
             ajuste()
             direita(1000)
             esperar(1840)
@@ -35,9 +37,11 @@ levantar(600)
             esperar(350)
             curvaDireita()
             ajuste()
-            enquanto (!toque(1)) farei {
-              tras(250)
+            zerartemporizador()
+            enquanto ((!toque(1)) e temporizador() < 500) farei {
+                tras(250)
             }
+            parar()
         }
 
         se(cor(1) == "PRETO" e cor(2) == "PRETO" e cor(4) == "PRETO" e cor(5) == "PRETO")entao{
