@@ -3,13 +3,14 @@ booleano verCurva = falso
 numero contador = 0
 
 numero triangulo = 0
+numero alvo = 0
 
 tarefa curvaEsquerda{
     escrever(1, "Curva pra Esquerda")
     frente(100)
     esperar(150)
     esquerda(1000)
-    esperar(650)
+    esperar(1000)
 
     zerartemporizador()
     enquanto (cor(3) != "PRETO" e temporizador() <= 2420) farei {
@@ -25,7 +26,7 @@ tarefa curvaDireita{
     frente(100)
     esperar(150)
     direita(1000)
-    esperar(650)
+    esperar(1000)
 
     zerartemporizador()
     enquanto (cor(3) != "PRETO" e temporizador() <= 2420) farei {
