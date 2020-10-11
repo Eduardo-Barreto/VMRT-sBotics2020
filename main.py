@@ -2,6 +2,8 @@ import os
 
 os.system('code --install-extension maptz.regionfolder')
 
+file_name = input('Digite o nome do arquivo final (sem a extensão): ')
+
 
 while True:
 
@@ -10,7 +12,7 @@ while True:
     if 'output' not in os.listdir('./'):
         os.mkdir('./output')
 
-    out = open('./output/VMRT.sBoticsR', 'w')
+    out = open('./output/'+file_name+'.sBoticsR', 'w')
 
     os.system('cls')
 
@@ -21,10 +23,7 @@ while True:
                       source_file[:source_file.find('.sBoticsR')] +
                       '\n')
             for line in current_file:
-                if '#' in line:
-                    pass
-                else:
-                    out.write('\t' + line)
+                out.write('\t' + line)
             current_file.close()
             out.write('\n#endregion\n\n')
 
