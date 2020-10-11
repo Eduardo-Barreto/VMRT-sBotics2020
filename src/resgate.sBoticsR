@@ -86,9 +86,10 @@ se (luz(6) < 12) entao {
     enquanto(direcao() < 224 ou direcao() > 226) farei{
         esquerda(1000)
     }
-
-    frente(250)
-    esperar(800)
+    enquanto (ultra(1) > 10) farei {
+        frente(250)
+    }
+    parar()
 
     enquanto(direcao() < 179 ou direcao() > 181) farei{
         esquerda(1000)
