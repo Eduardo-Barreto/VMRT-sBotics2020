@@ -1,2 +1,107 @@
 escrever(3, "resgate")
 
+parar()
+
+se (inclinacao() > 347 e inclinacao() < 349) entao {
+        tras(150)
+        esperar(1000)
+        frente(300)
+        esperar(300)
+    repita 4 vezes {
+        tras(100)
+        esperar(500)
+        frente(150)
+        esperar(400)
+    }
+    parar()
+    enquanto (ultra(2)<20) farei {
+        frente(100)
+    }
+    parar()
+}
+
+girarbaixo(600)
+levantar(600)
+
+velocidadeatuador(75)
+
+frente(300)
+esperar(500)
+parar()
+enquanto(direcao() < 315 ou direcao() > 316)farei{
+    direita(1000)
+}
+parar()
+
+zerartemporizador()
+alvo = 4200
+contador = 0
+enquanto (temporizador() < alvo) farei {
+    frente(250)
+    se (ultra(3) < 10) entao {
+        se (resto(contador, 3) == 0) entao {
+            enquanto (direcao() < 340) farei {
+                direita(1000)
+            }
+            frente(250)
+            esperar(800)
+            enquanto (direcao() > 315) farei {
+                esquerda(1000)
+            }
+            alvo = alvo + 2000
+        }
+        senao{
+            enquanto (direcao() > 290) farei {
+                esquerda(1000)
+            }
+            frente(250)
+            esperar(800)
+            enquanto (direcao() < 315) farei {
+                direita(1000)
+            }
+            alvo = alvo + 2000
+        }
+   }
+}
+frente(250)
+esperar(300)
+tras(100)
+esperar(300)
+parar()
+
+se (luz(6) < 12) entao {
+    triangulo = direcao()
+    escrever(1, concatenar("o triangulo está em ", virartexto(triangulo)))
+    se (direcao() > 316) entao {
+        enquanto(direcao() < 314 ou direcao() > 316)farei{
+            esquerda(1000)
+        }
+    }
+    senao{
+        enquanto(direcao() < 314 ou direcao() > 316)farei{
+            direita(1000)
+        }
+    }
+    
+    enquanto(direcao() < 224 ou direcao() > 226) farei{
+        esquerda(1000)
+    }
+
+    frente(250)
+    esperar(800)
+
+    enquanto(direcao() < 179 ou direcao() > 181) farei{
+        esquerda(1000)
+    }
+}
+senao{
+    trasrotacao(250, 50)
+}
+
+
+# entrada parede = 248
+# entrada triangulo = 151
+
+#encontrar triangulo
+
+# encontrar bolinhas

@@ -4,13 +4,14 @@
 	numero contador = 0
 	
 	numero triangulo = 0
+	numero alvo = 0
 	
 	tarefa curvaEsquerda{
 	    escrever(1, "Curva pra Esquerda")
 	    frente(100)
 	    esperar(150)
 	    esquerda(1000)
-	    esperar(650)
+	    esperar(1000)
 	
 	    zerartemporizador()
 	    enquanto (cor(3) != "PRETO" e temporizador() <= 2420) farei {
@@ -26,7 +27,7 @@
 	    frente(100)
 	    esperar(150)
 	    direita(1000)
-	    esperar(650)
+	    esperar(1000)
 	
 	    zerartemporizador()
 	    enquanto (cor(3) != "PRETO" e temporizador() <= 2420) farei {
@@ -64,34 +65,42 @@
 	}
 	
 	tarefa ajuste{
+	    #Primeiro Quadrante
 	    se((direcao() > 0 ou direcao() < 360) e direcao() <= 45)entao{
 	        angulo = direcao()
 	        rotacionar(500, negativo(angulo))
 	    }
+	    #Segundo Quadrante
 	    senao se(direcao() > 45 e direcao() <= 90)entao{
 	        angulo = 90 - direcao()
 	        rotacionar(500, angulo)
 	    }
+	    #Terceiro Quadrante
 	    senao se(direcao() > 90 e direcao() <= 135)entao{
 	        angulo = 90 - direcao()
 	        rotacionar(500, angulo)
 	    }
+	    #Quarto Quadrante
 	    senao se(direcao() > 135 e direcao() <= 180)entao{
 	        angulo = 180 - direcao()
 	        rotacionar(500, angulo)
 	    }
+	    #Quinto Quadrante
 	    senao se(direcao() > 180 e direcao() <= 225)entao{
 	        angulo = 180 - direcao()
 	        rotacionar(500, angulo)
 	    }
+	    #Sexto Quadrante
 	    senao se(direcao() > 225 e direcao() <= 270)entao{
 	        angulo = 270 - direcao()
 	        rotacionar(500, angulo)
 	    }
+	    #Sétimo Quadrante
 	    senao se(direcao() > 270 e direcao() <= 315) entao{
 	        angulo = 270 - direcao()
 	        rotacionar(500, angulo)
 	    }
+	    #Oitava Quadrante
 	    senao se(direcao() > 315 e direcao() <= 360)entao{
 	        angulo = 360 - direcao()
 	        rotacionar(500, angulo)
@@ -101,14 +110,18 @@
 
 #region arena
 	inicio
+	pintar()
 	velocidadeatuador(150)
+	girarcima(600)
 	levantar(600)
 	
-	    enquanto ((ultra(2) > 20) e (inclinacao()<320 ou inclinacao()>342)) farei {
+	#--------------------PISO--------------------
+	    enquanto ((ultra(2) > 20) ou (inclinacao()<320 ou inclinacao()>342)) farei {
 	        escrever(3, "piso")
 	        
 	        se(ultra(3)<20) entao{
 	            se(ultra(1)>30 e ultra(1)<70)entao{
+	            escrever(2, "Obstáculo")
 	                frenterotacao(150, 15)
 	                se(ultra(2)<30)entao{
 	                    interromper()
@@ -117,7 +130,6 @@
 	                    trasrotacao(150, 15)                
 	                }
 	            }
-	            escrever(1, "Obstáculo")
 	            ajuste()
 	            direita(1000)
 	            esperar(1840)
@@ -136,9 +148,11 @@
 	            esperar(350)
 	            curvaDireita()
 	            ajuste()
-	            enquanto (!toque(1)) farei {
-	              tras(250)
+	            zerartemporizador()
+	            enquanto ((!toque(1)) e temporizador() < 500) farei {
+	                tras(250)
 	            }
+	            parar()
 	        }
 	
 	        se(cor(1) == "PRETO" e cor(2) == "PRETO" e cor(4) == "PRETO" e cor(5) == "PRETO")entao{
@@ -147,6 +161,8 @@
 	            esperar(400)
 	        }
 	
+	    #------------------CURVAS-------------------
+	    #------------------VERDE---------------------
 	        
 	        se (cor(2) == "VERDE" e cor(4) == "VERDE") entao {
 	            escrever(2, "beco")
@@ -169,6 +185,7 @@
 	            esperar(750)
 	            curvaEsquerda()
 	        }
+	    #-------------------PRETO---------------------
 	        se (cor(1) == "PRETO" e cor(2) == "PRETO") entao {
 	            escrever(2, "PRETO")
 	            verificaCurva()
@@ -185,6 +202,7 @@
 	            }
 	        }
 	
+	    #--------------------SEGUIDOR-----------------
 	        seguirLinha()
 	
 	    }
@@ -194,12 +212,11 @@
 #region rampa
 	    limparconsole()
 	    escrever(3, "subindo rampa")
-	    baixar(500)
+	    baixar(600)
 	
 	    enquanto (ultra(2)>20) farei {
 	        seguirLinha()
 	    }
-	    baixar(150)
 	    enquanto (ultra(2)<20) farei {
 	        seguirLinha()
 	    }
@@ -209,6 +226,112 @@
 
 #region resgate
 	escrever(3, "resgate")
+	
+	parar()
+	
+	se (inclinacao() > 347 e inclinacao() < 349) entao {
+	        tras(150)
+	        esperar(1000)
+	        frente(300)
+	        esperar(300)
+	    repita 4 vezes {
+	        tras(100)
+	        esperar(500)
+	        frente(150)
+	        esperar(400)
+	    }
+	    parar()
+	    enquanto (ultra(2)<20) farei {
+	        frente(100)
+	    }
+	    parar()
+	}
+	
+	girarbaixo(600)
+	levantar(600)
+	
+	velocidadeatuador(75)
+	
+	frente(300)
+	esperar(500)
+	parar()
+	enquanto(direcao() < 315 ou direcao() > 316)farei{
+	    direita(1000)
+	}
+	parar()
+	
+	zerartemporizador()
+	alvo = 4200
+	contador = 0
+	enquanto (temporizador() < alvo) farei {
+	    frente(250)
+	    se (ultra(3) < 10) entao {
+	        se (resto(contador, 3) == 0) entao {
+	            enquanto (direcao() < 340) farei {
+	                direita(1000)
+	            }
+	            frente(250)
+	            esperar(800)
+	            enquanto (direcao() > 315) farei {
+	                esquerda(1000)
+	            }
+	            alvo = alvo + 2000
+	        }
+	        senao{
+	            enquanto (direcao() > 290) farei {
+	                esquerda(1000)
+	            }
+	            frente(250)
+	            esperar(800)
+	            enquanto (direcao() < 315) farei {
+	                direita(1000)
+	            }
+	            alvo = alvo + 2000
+	        }
+	   }
+	}
+	frente(250)
+	esperar(300)
+	tras(100)
+	esperar(300)
+	parar()
+	
+	se (luz(6) < 12) entao {
+	    triangulo = direcao()
+	    escrever(1, concatenar("o triangulo está em ", virartexto(triangulo)))
+	    se (direcao() > 316) entao {
+	        enquanto(direcao() < 314 ou direcao() > 316)farei{
+	            esquerda(1000)
+	        }
+	    }
+	    senao{
+	        enquanto(direcao() < 314 ou direcao() > 316)farei{
+	            direita(1000)
+	        }
+	    }
+	    
+	    enquanto(direcao() < 224 ou direcao() > 226) farei{
+	        esquerda(1000)
+	    }
+	
+	    frente(250)
+	    esperar(800)
+	
+	    enquanto(direcao() < 179 ou direcao() > 181) farei{
+	        esquerda(1000)
+	    }
+	}
+	senao{
+	    trasrotacao(250, 50)
+	}
+	
+	
+	# entrada parede = 248
+	# entrada triangulo = 151
+	
+	#encontrar triangulo
+	
+	# encontrar bolinhas
 #endregion
 
 fim
