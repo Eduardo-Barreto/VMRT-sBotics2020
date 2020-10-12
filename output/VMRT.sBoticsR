@@ -1,4 +1,4 @@
-#region acoes
+#region acoes_gerais
 	numero angulo = 0
 	booleano verCurva = falso
 	numero contador = 0
@@ -106,6 +106,132 @@
 	        rotacionar(500, angulo)
 	    }
 	}
+#endregion
+
+#region acoes_resgate
+	tarefa vitimaEntrada{
+	    escrever(1, "Desviando da vitima")
+	    tras(150)
+	    esperar(1000)
+	    frente(300)
+	    esperar(300)
+	    repita 4 vezes {
+	        tras(100)
+	        esperar(500)
+	        frente(150)
+	        esperar(400)
+	    }
+	    parar()
+	    enquanto (ultra(2)<20) farei {
+	        frente(100)
+	    }
+	    parar()
+	}
+	
+	tarefa desviarVitima{
+	    se (resto(contador, 3) == 0) entao {
+	        enquanto (direcao() < 340) farei {
+	            direita(1000)
+	        }
+	        frente(250)
+	        esperar(800)
+	        enquanto (direcao() > 315) farei {
+	            esquerda(1000)
+	        }
+	    }
+	    senao{
+	        enquanto (direcao() > 290) farei {
+	            esquerda(1000)
+	        }
+	        frente(250)
+	        esperar(800)
+	        enquanto (direcao() < 315) farei {
+	            direita(1000)
+	        }
+	    }
+	    contador = contador+1
+	    alvo = alvo + 2000
+	}
+	
+	tarefa parede {
+	    escrever(1, "Ops, parede!")
+	    rotacionar (500, 90)
+	}
+	
+	tarefa  buscarVitima{
+	    enquanto (verdadeiro) farei {
+	        frente(200)
+	        esperar(100)
+	        rotacionar(500, 90)
+	        enquanto (ultra(3) > 30) farei {
+	            frente(200)
+	        }
+	        se (ultra(1) < 10) entao {
+	            parede()
+	            interromper()
+	        }
+	        parar()
+	        girarcima(1400)
+	        baixar(1400)
+	        girarbaixo(1000)
+	        frente(300)
+	        esperar(450)
+	        levantar(700)
+	        parar()
+	        levantar(700)
+	        girarcima(1500)
+	        interromper()
+	    }
+	}
+	
+	tarefa  alinharArea1{
+	    se (direcao() > 316) entao {
+	        enquanto(direcao() < 314 ou direcao() > 316)farei{
+	            esquerda(1000)
+	        }
+	    }
+	    senao{
+	        enquanto(direcao() < 314 ou direcao() > 316)farei{
+	            direita(1000)
+	        }
+	    }
+	    
+	    enquanto(direcao() < 44 ou direcao() > 46) farei{
+	        direita(1000)
+	    }
+	    enquanto (ultra(1) > 10) farei {
+	        frente(250)
+	    }
+	    parar()
+	
+	    enquanto(direcao() < 89 ou direcao() > 91) farei{
+	        direita(1000)
+	    }
+	    parar()
+	}
+	tarefa levarVitima {
+	    enquanto(direcao() < triangulo -1 ou direcao() > triangulo + 1) farei {
+	        direita(1000)
+	    }
+	    parar()
+	    enquanto(cor(6) != "PRETO" ou ultra(1) > 75)farei{
+	        frente(200)
+	    }
+	    parar()
+	    baixar(700)
+	    tras(150)
+	    esperar(200)
+	    frente(150)
+	    esperar(200)
+	    tras(150)
+	    esperar(200)
+	    frente(150)
+	    esperar(200)
+	    levantar(700)
+	    girarbaixo(1400)
+	    alinharArea1()
+	}
+
 #endregion
 
 #region arena
@@ -230,21 +356,7 @@
 	parar()
 	
 	se (inclinacao() > 347 e inclinacao() < 349) entao {
-	        tras(150)
-	        esperar(1000)
-	        frente(300)
-	        esperar(300)
-	    repita 4 vezes {
-	        tras(100)
-	        esperar(500)
-	        frente(150)
-	        esperar(400)
-	    }
-	    parar()
-	    enquanto (ultra(2)<20) farei {
-	        frente(100)
-	    }
-	    parar()
+	    vitimaEntrada()
 	}
 	
 	girarbaixo(600)
@@ -260,36 +372,16 @@
 	}
 	parar()
 	
-	zerartemporizador()
 	alvo = 4200
 	contador = 0
+	zerartemporizador()
 	enquanto (temporizador() < alvo) farei {
 	    frente(250)
 	    se (ultra(3) < 10) entao {
-	        se (resto(contador, 3) == 0) entao {
-	            enquanto (direcao() < 340) farei {
-	                direita(1000)
-	            }
-	            frente(250)
-	            esperar(800)
-	            enquanto (direcao() > 315) farei {
-	                esquerda(1000)
-	            }
-	            alvo = alvo + 2000
-	        }
-	        senao{
-	            enquanto (direcao() > 290) farei {
-	                esquerda(1000)
-	            }
-	            frente(250)
-	            esperar(800)
-	            enquanto (direcao() < 315) farei {
-	                direita(1000)
-	            }
-	            alvo = alvo + 2000
-	        }
-	   }
+	        desviarVitima()
+	    }
 	}
+	
 	frente(250)
 	esperar(300)
 	tras(100)
@@ -299,27 +391,19 @@
 	se (luz(6) < 12) entao {
 	    triangulo = direcao()
 	    escrever(1, concatenar("o triangulo está em ", virartexto(triangulo)))
-	    se (direcao() > 316) entao {
-	        enquanto(direcao() < 314 ou direcao() > 316)farei{
-	            esquerda(1000)
+	    alinharArea1()
+	    enquanto (verdadeiro) farei {
+	        enquanto (ultra(1) > 10 e ultra(2) > 240) farei {
+	            frente(200)
 	        }
-	    }
-	    senao{
-	        enquanto(direcao() < 314 ou direcao() > 316)farei{
-	            direita(1000)
+	        parar()
+	        se (ultra(1) <= 10) entao {
+	            parede()
 	        }
-	    }
-	    
-	    enquanto(direcao() < 224 ou direcao() > 226) farei{
-	        esquerda(1000)
-	    }
-	    enquanto (ultra(1) > 10) farei {
-	        frente(250)
-	    }
-	    parar()
-	
-	    enquanto(direcao() < 179 ou direcao() > 181) farei{
-	        esquerda(1000)
+	        senao{
+	            buscarVitima()
+	            levarVitima()
+	        }
 	    }
 	}
 	senao{
