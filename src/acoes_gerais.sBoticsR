@@ -2,15 +2,12 @@ numero angulo = 0
 booleano verCurva = falso
 numero contador = 0
 
-numero triangulo = 0
-numero alvo = 0
-
 tarefa curvaEsquerda{
     escrever(1, "Curva pra Esquerda")
     frente(100)
     esperar(150)
     esquerda(1000)
-    esperar(1000)
+    esperar(500)
 
     zerartemporizador()
     enquanto (cor(3) != "PRETO" e temporizador() <= 2420) farei {
@@ -26,6 +23,38 @@ tarefa curvaDireita{
     frente(100)
     esperar(150)
     direita(1000)
+    esperar(500)
+
+    zerartemporizador()
+    enquanto (cor(3) != "PRETO" e temporizador() <= 2320) farei {
+        direita(1000)
+    }
+    tras(100)
+    esperar(250)
+    limparconsole()
+}
+
+tarefa curvaEsquerdaVerde {
+    escrever(1, "Curva pra Esquerda")
+    frente(100)
+    esperar(150)
+    esquerda(1000)
+    esperar(1000)
+
+    zerartemporizador()
+    enquanto (cor(3) != "PRETO" e temporizador() <= 2320) farei {
+        esquerda(1000)
+    }
+    tras(100)
+    esperar(250)
+    limparconsole()
+}
+
+tarefa curvaDireitaVerde {
+    escrever(1, "Curva pra Direita")
+    frente(100)
+    esperar(150)
+    direita(1000)
     esperar(1000)
 
     zerartemporizador()
@@ -36,7 +65,6 @@ tarefa curvaDireita{
     esperar(250)
     limparconsole()
 }
-
 tarefa seguirLinha{
     se(cor(1) == "PRETO" ou cor(2) == "PRETO")entao{
         escrever(1, "um tequinho pra direita")

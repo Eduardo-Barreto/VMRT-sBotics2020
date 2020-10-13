@@ -1,5 +1,4 @@
 inicio
-pintar()
 velocidadeatuador(150)
 girarcima(600)
 levantar(600)
@@ -57,7 +56,8 @@ levantar(600)
             escrever(2, "beco")
             frente(150)
             esperar(400)
-            curvaEsquerda()
+            esquerda(1000)
+            esperar(3420)
             curvaEsquerda()
         }
 
@@ -65,14 +65,14 @@ levantar(600)
             escrever(2, "VERDE")
             frente(150)
             esperar(750)
-            curvaDireita()
+            curvaDireitaVerde()
         }
 
         se (cor(4) == "VERDE" ou cor(5) == "VERDE") entao {
             escrever(2, "VERDE")
             frente(150)
             esperar(750)
-            curvaEsquerda()
+            curvaEsquerdaVerde()
         }
     #-------------------PRETO---------------------
         se (cor(1) == "PRETO" e cor(2) == "PRETO") entao {
