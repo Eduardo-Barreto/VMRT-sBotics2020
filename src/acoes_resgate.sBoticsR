@@ -1,5 +1,11 @@
+numero direcaoAtual = 0
+numero triangulo = 0
+numero alvo = 0
+numero distanciaParede = 0
+numero alinhamentoBusca = 0
+
 tarefa vitimaEntrada{
-    escrever(1, "Desviando da vitima")
+    escrever(1, "Empurrando vitima da entrada")
     tras(150)
     esperar(1000)
     frente(300)
@@ -18,25 +24,18 @@ tarefa vitimaEntrada{
 }
 
 tarefa desviarVitima{
+    escrever(1, "Desviando da vítima, procurando área segura")
     se (resto(contador, 3) == 0) entao {
-        enquanto (direcao() < 340) farei {
-            direita(1000)
-        }
+        rotacionar (500, 25)
         frente(250)
         esperar(800)
-        enquanto (direcao() > 315) farei {
-            esquerda(1000)
-        }
+        rotacionar (500, 0-25)
     }
     senao{
-        enquanto (direcao() > 290) farei {
-            esquerda(1000)
-        }
+        rotacionar (500, 0-25)
         frente(250)
         esperar(800)
-        enquanto (direcao() < 315) farei {
-            direita(1000)
-        }
+        rotacionar (500, 25)
     }
     contador = contador+1
     alvo = alvo + 2000
@@ -45,15 +44,20 @@ tarefa desviarVitima{
 tarefa parede {
     escrever(1, "Ops, parede!")
     rotacionar (500, 90)
+    distanciaParede = 140
 }
 
 tarefa  buscarVitima{
+    escrever(1, "Possível vítima, indo verificar")
+    alinhamentoBusca = direcao()
     enquanto (verdadeiro) farei {
         frente(200)
         esperar(100)
         rotacionar(500, 90)
+        tras(300)
+        esperar(150)
         enquanto (ultra(3) > 30) farei {
-            frente(200)
+            frente(250)
         }
         se (ultra(1) < 10) entao {
             parede()
@@ -74,6 +78,7 @@ tarefa  buscarVitima{
 }
 
 tarefa  alinharArea1{
+    escrever(1, "Alinhamento da área 1")
     se (direcao() > 316) entao {
         enquanto(direcao() < 314 ou direcao() > 316)farei{
             esquerda(1000)
@@ -98,13 +103,74 @@ tarefa  alinharArea1{
     }
     parar()
 }
-tarefa levarVitima {
-    enquanto(direcao() < triangulo -1 ou direcao() > triangulo + 1) farei {
+
+tarefa  alinharArea2{
+    escrever(1, "Alinhamento da área 2")
+    se (direcao() > 46) entao {
+        enquanto(direcao() < 44 ou direcao() > 46)farei{
+            esquerda(1000)
+        }
+    }
+    senao{
+        enquanto(direcao() < 44 ou direcao() > 46)farei{
+            direita(1000)
+        }
+    }
+    
+    enquanto(direcao() < 134 ou direcao() > 136) farei{
+        direita(1000)
+    }
+    enquanto (ultra(1) > 10) farei {
+        frente(250)
+    }
+    parar()
+
+    enquanto(direcao() < 179 ou direcao() > 181) farei{
         direita(1000)
     }
     parar()
+}
+
+tarefa  alinharArea3{
+    escrever(1, "Alinhamento da área 3")
+    se (direcao() > 226) entao {
+        enquanto(direcao() < 224 ou direcao() > 226)farei{
+            esquerda(1000)
+        }
+    }
+    senao{
+        enquanto(direcao() < 224 ou direcao() > 226)farei{
+            direita(1000)
+        }
+    }
+    
+    enquanto(direcao() < 314 ou direcao() > 316) farei{
+        direita(1000)
+    }
+    enquanto (ultra(1) > 10) farei {
+        frente(250)
+    }
+    parar()
+
+    enquanto(direcao() < 1 ou direcao() > 3) farei{
+        direita(1000)
+    }
+    parar()
+}
+
+tarefa levarVitima {
+    escrever(1, "Levando vítima")
+    direcaoAtual = direcao()
+    enquanto(direcaoAtual < triangulo -2 ou direcaoAtual > triangulo + 2) farei {
+        direita(1000)
+        direcaoAtual = direcao()
+    }
+    parar()
     enquanto(cor(6) != "PRETO" ou ultra(1) > 75)farei{
-        frente(200)
+        frente(150)
+        se (ultra(3) < 6) entao {
+            desviarVitima()
+        }
     }
     parar()
     baixar(700)
@@ -118,5 +184,13 @@ tarefa levarVitima {
     esperar(200)
     levantar(700)
     girarbaixo(1400)
-    alinharArea1()
+    se(triangulo > 270)entao{
+        alinharArea1()
+    }
+    se(triangulo < 90)entao{
+        alinharArea2()
+    }
+    se(triangulo > 180 e triangulo < 270)entao{
+        alinharArea3()
+    }
 }
