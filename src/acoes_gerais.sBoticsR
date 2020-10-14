@@ -46,7 +46,7 @@ tarefa curvaEsquerdaVerde {
         esquerda(1000)
     }
     tras(100)
-    esperar(250)
+    esperar(300)
     limparconsole()
 }
 
@@ -62,9 +62,10 @@ tarefa curvaDireitaVerde {
         direita(1000)
     }
     tras(100)
-    esperar(250)
+    esperar(300)
     limparconsole()
 }
+
 tarefa seguirLinha{
     se(cor(1) == "PRETO" ou cor(2) == "PRETO")entao{
         escrever(1, "um tequinho pra direita")
