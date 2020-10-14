@@ -47,7 +47,7 @@
 	        esquerda(1000)
 	    }
 	    tras(100)
-	    esperar(250)
+	    esperar(300)
 	    limparconsole()
 	}
 	
@@ -63,9 +63,10 @@
 	        direita(1000)
 	    }
 	    tras(100)
-	    esperar(250)
+	    esperar(300)
 	    limparconsole()
 	}
+	
 	tarefa seguirLinha{
 	    se(cor(1) == "PRETO" ou cor(2) == "PRETO")entao{
 	        escrever(1, "um tequinho pra direita")
@@ -142,6 +143,9 @@
 	numero alvo = 0
 	numero distanciaParede = 0
 	numero alinhamentoBusca = 0
+	numero tempoVoltar = 0
+	numero retorno = 0
+	numero diferencaUltra = 0
 	
 	tarefa vitimaEntrada{
 	    escrever(1, "Empurrando vitima da entrada")
@@ -189,15 +193,14 @@
 	tarefa  buscarVitima{
 	    escrever(1, "Possível vítima, indo verificar")
 	    alinhamentoBusca = direcao()
+	    tras(200)
+	    esperar(200)
 	    enquanto (verdadeiro) farei {
-	        frente(200)
-	        esperar(100)
-	        rotacionar(500, 90)
-	        tras(300)
-	        esperar(150)
+	        zerartemporizador()
 	        enquanto (ultra(3) > 30) farei {
 	            frente(250)
 	        }
+	        tempoVoltar = temporizador()
 	        se (ultra(1) < 10) entao {
 	            parede()
 	            interromper()
@@ -212,96 +215,58 @@
 	        parar()
 	        levantar(700)
 	        girarcima(1500)
+	        tempoVoltar = tempoVoltar + 400
 	        interromper()
 	    }
 	}
 	
-	tarefa  alinharArea1{
+	tarefa  alinharAreaSegura{
 	    escrever(1, "Alinhamento da área 1")
-	    se (direcao() > 316) entao {
-	        enquanto(direcao() < 314 ou direcao() > 316)farei{
+	    se (direcao() > triangulo + 1) entao {
+	        enquanto(direcao() < triangulo - 1 ou direcao() > triangulo + 1)farei{
 	            esquerda(1000)
 	        }
 	    }
 	    senao{
-	        enquanto(direcao() < 314 ou direcao() > 316)farei{
+	        enquanto(direcao() < triangulo - 1 ou direcao() > triangulo + 1)farei{
 	            direita(1000)
 	        }
 	    }
 	    
-	    enquanto(direcao() < 44 ou direcao() > 46) farei{
-	        direita(1000)
+	    alvo = triangulo + 90
+	    se (alvo > 360) entao {
+	        alvo = alvo - 360
 	    }
+	
+	    direcaoAtual = direcao()
+	    enquanto(direcaoAtual < alvo - 1 ou direcaoAtual > alvo + 1) farei{
+	        direita(1000)
+	        direcaoAtual = direcao()
+	    }
+	    parar()
+	
 	    enquanto (ultra(1) > 10) farei {
 	        frente(250)
 	    }
 	    parar()
 	
-	    enquanto(direcao() < 89 ou direcao() > 91) farei{
-	        direita(1000)
+	    enquanto (ultra(1) < 70) farei {
+	        tras(250)
 	    }
 	    parar()
-	}
-	
-	tarefa  alinharArea2{
-	    escrever(1, "Alinhamento da área 2")
-	    se (direcao() > 46) entao {
-	        enquanto(direcao() < 44 ou direcao() > 46)farei{
-	            esquerda(1000)
-	        }
-	    }
-	    senao{
-	        enquanto(direcao() < 44 ou direcao() > 46)farei{
-	            direita(1000)
-	        }
-	    }
-	    
-	    enquanto(direcao() < 134 ou direcao() > 136) farei{
-	        direita(1000)
-	    }
-	    enquanto (ultra(1) > 10) farei {
-	        frente(250)
-	    }
-	    parar()
-	
-	    enquanto(direcao() < 179 ou direcao() > 181) farei{
-	        direita(1000)
-	    }
-	    parar()
-	}
-	
-	tarefa  alinharArea3{
-	    escrever(1, "Alinhamento da área 3")
-	    se (direcao() > 226) entao {
-	        enquanto(direcao() < 224 ou direcao() > 226)farei{
-	            esquerda(1000)
-	        }
-	    }
-	    senao{
-	        enquanto(direcao() < 224 ou direcao() > 226)farei{
-	            direita(1000)
-	        }
-	    }
-	    
-	    enquanto(direcao() < 314 ou direcao() > 316) farei{
-	        direita(1000)
-	    }
-	    enquanto (ultra(1) > 10) farei {
-	        frente(250)
-	    }
-	    parar()
-	
-	    enquanto(direcao() < 1 ou direcao() > 3) farei{
-	        direita(1000)
-	    }
-	    parar()
+	    direita(1000)
+	    esperar(200)
 	}
 	
 	tarefa levarVitima {
 	    escrever(1, "Levando vítima")
 	    direcaoAtual = direcao()
-	    enquanto(direcaoAtual < triangulo -2 ou direcaoAtual > triangulo + 2) farei {
-	        direita(1000)
+	    retorno = alinhamentoBusca + 180
+	    se (retorno > 360) entao {
+	        retorno = retorno - 360
+	    }
+	    enquanto(direcaoAtual < retorno -2 ou direcaoAtual > retorno + 2) farei {
+	        esquerda(1000)
 	        direcaoAtual = direcao()
 	    }
 	    parar()
@@ -323,15 +288,7 @@
 	    esperar(200)
 	    levantar(700)
 	    girarbaixo(1400)
-	    se(triangulo > 270)entao{
-	        alinharArea1()
-	    }
-	    se(triangulo < 90)entao{
-	        alinharArea2()
-	    }
-	    se(triangulo > 180 e triangulo < 270)entao{
-	        alinharArea3()
-	    }
+	    alinharAreaSegura()
 	}
 
 #endregion
@@ -493,32 +450,41 @@
 	
 	se (luz(6) < 12) entao {
 	    triangulo = 315
-	    distanciaParede = 240
 	    escrever(2, concatenar(concatenar("o triangulo está a +/- ", virartexto(triangulo)), "° ao norte"))
-	    alinharArea1()
+	    alinharAreaSegura()
+	    distanciaParede = arredondar(direcao()) + 180
+	    se(distanciaParede > 360)entao{
+	        distanciaParede = distanciaParede - 360
+	    }
 	    enquanto (verdadeiro) farei {
-	        enquanto (ultra(1) > 10 e ultra(2) > distanciaParede) farei {
-	            escrever(1, "Procurando vítimas")
-	            frente(200)
+	        direcaoAtual = direcao()
+	        diferencaUltra = ultra(1) - ultra(3)
+	        enquanto (diferencaUltra < 15 ou ultra(1) > 900) farei {
+	            direcaoAtual = direcao()
+	            se (direcaoAtual < distanciaParede + 1 e direcaoAtual > distanciaParede - 1) entao {
+	                parede()
+	            }
+	            direita(1000)
+	            diferencaUltra = ultra(1) - ultra(3)
+	            escrevernumero(2, diferencaUltra)
 	        }
-	        parar()
-	        se (ultra(1) <= 10) entao {
-	            parede()
-	        }
-	        senao{
-	            se (ultra(2) > 13) entao {
+	        se (diferencaUltra < 1000) entao {
+	            direita(1000)
+	            esperar(150)
+	            parar()
+	            se (ultra(3) > 13) entao {
 	                buscarVitima()
 	                se(temvitima()) entao {
 	                    levarVitima()
 	                }
 	                senao{
 	                    escrever(1, "Não tem vítima, voltando...")
-	                    enquanto (!toque(1)) farei {
-	                        tras(300)
+	                    zerartemporizador()
+	                    enquanto (temporizador() < tempoVoltar) farei {
+	                        escrever(1, concatenar(virartexto(temporizador()), virartexto(tempoVoltar)))
+	                        tras(250)
 	                    }
-	                    enquanto (direcao() < alinhamentoBusca - 1 ou direcao() > alinhamentoBusca + 1) farei {
-	                        esquerda(1000)
-	                    }
+	                    parar()
 	                }
 	            }
 	            senao{
@@ -531,13 +497,6 @@
 	}
 	senao{
 	    trasrotacao(250, 60)
-	    direcaoAtual = direcao()
-	    enquanto(direcaoAtual < 44 ou direcaoAtual > 46)farei{
-	        direita(1000)
-	        direcaoAtual = direcao()
-	    }
-	    parar()
-	
 	    alvo = 2100
 	    contador = 0
 	    zerartemporizador()
@@ -556,34 +515,42 @@
 	    parar()
 	
 	    se (luz(6) < 12) entao {
-	        triangulo = 50
-	        distanciaParede = 240
-	        escrever(2, concatenar(concatenar("o triangulo está a +/-", virartexto(triangulo)), "° ao norte"))
-	        alinharArea2()
-	
+	        triangulo = 130
+	        escrever(2, concatenar(concatenar("o triangulo está a +/- ", virartexto(triangulo)), "° ao norte"))
+	        alinharAreaSegura()
+	        distanciaParede = arredondar(direcao()) + 180
+	        se(distanciaParede > 360)entao{
+	            distanciaParede = distanciaParede - 360
+	        }
 	        enquanto (verdadeiro) farei {
-	            enquanto (ultra(1) > 10 e ultra(2) > distanciaParede) farei {
-	                escrever(1, "Procurando vítimas")
-	                frente(200)
+	            direcaoAtual = direcao()
+	            diferencaUltra = ultra(1) - ultra(3)
+	            enquanto (diferencaUltra < 15 ou ultra(1) > 900) farei {
+	                direcaoAtual = direcao()
+	                se (direcaoAtual < distanciaParede + 1 e direcaoAtual > distanciaParede - 1) entao {
+	                    parede()
+	                }
+	                direita(1000)
+	                diferencaUltra = ultra(1) - ultra(3)
+	                escrevernumero(2, diferencaUltra)
 	            }
-	            parar()
-	            se (ultra(1) <= 10) entao {
-	                parede()
-	            }
-	            senao{
-	                se (ultra(2) > 13) entao {
+	            se (diferencaUltra < 1000) entao {
+	                direita(1000)
+	                esperar(150)
+	                parar()
+	                se (ultra(3) > 13) entao {
 	                    buscarVitima()
 	                    se(temvitima()) entao {
 	                        levarVitima()
 	                    }
 	                    senao{
 	                        escrever(1, "Não tem vítima, voltando...")
-	                        enquanto (!toque(1)) farei {
-	                            tras(300)
+	                        zerartemporizador()
+	                        enquanto (temporizador() < tempoVoltar) farei {
+	                            escrever(1, concatenar(virartexto(temporizador()), virartexto(tempoVoltar)))
+	                            tras(250)
 	                        }
-	                        enquanto (direcao() < alinhamentoBusca - 1 ou direcao() > alinhamentoBusca + 1) farei {
-	                            esquerda(1000)
-	                        }
+	                        parar()
 	                    }
 	                }
 	                senao{
@@ -594,82 +561,11 @@
 	            }
 	        }
 	    }
-	    senao{
-	        trasrotacao(250, 60)
-	        direcaoAtual = direcao()
-	        enquanto(direcaoAtual < 224 ou direcaoAtual > 226)farei{
-	            direita(1000)
-	            direcaoAtual = direcao()
-	        }
-	        parar()
-	
-	        alvo = 2100
-	        contador = 0
-	        zerartemporizador()
-	        enquanto (temporizador() < alvo) farei {
-	            escrever(1, "Procurando área segura")
-	            frente(250)
-	            se (ultra(3) < 10) entao {
-	                desviarVitima()
-	            }
-	        }
-	
-	        frente(250)
-	        esperar(300)
-	        tras(100)
-	        esperar(300)
-	        parar()
-	
-	        se (luz(6) < 12) entao {
-	            triangulo = 230
-	            distanciaParede = 240
-	            escrever(2, concatenar(concatenar("o triangulo está a +/-", virartexto(triangulo)), "° ao norte"))
-	            alinharArea3()
-	            enquanto (verdadeiro) farei {
-	                enquanto (ultra(1) > 10 e ultra(2) > distanciaParede) farei {
-	                    escrever(1, "Procurando vítimas")
-	                    frente(200)
-	                }
-	                parar()
-	                se (ultra(1) <= 10) entao {
-	                    parede()
-	                }
-	                senao{
-	                    se (ultra(2) > 13) entao {
-	                        buscarVitima()
-	                        se(temvitima()) entao {
-	                            levarVitima()
-	                        }
-	                        senao{
-	                            escrever(1, "Não tem vítima, voltando...")
-	                            enquanto (!toque(1)) farei {
-	                                tras(300)
-	                            }
-	                            enquanto (direcao() < alinhamentoBusca - 1 ou direcao() > alinhamentoBusca + 1) farei {
-	                                esquerda(1000)
-	                            }
-	                        }
-	                    }
-	                    senao{
-	                        escrever(1, "Muito perto :(")
-	                        frente(100)            
-	                        esperar(100)
-	                    }
-	                }
-	            }
-	        }
-	
-	    }
-	
 	}
-	
-	
-	# entrada parede = 248
-	# entrada triangulo = 151
-	
-	#encontrar triangulo
-	
-	# encontrar bolinhas
+	senao{
+	    trasrotacao(250, 60)
+	        
+	}
 #endregion
 
 fim

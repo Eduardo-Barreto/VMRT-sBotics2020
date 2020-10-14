@@ -3,6 +3,9 @@ numero triangulo = 0
 numero alvo = 0
 numero distanciaParede = 0
 numero alinhamentoBusca = 0
+numero tempoVoltar = 0
+numero retorno = 0
+numero diferencaUltra = 0
 
 tarefa vitimaEntrada{
     escrever(1, "Empurrando vitima da entrada")
@@ -50,15 +53,14 @@ tarefa parede {
 tarefa  buscarVitima{
     escrever(1, "Possível vítima, indo verificar")
     alinhamentoBusca = direcao()
+    tras(200)
+    esperar(200)
     enquanto (verdadeiro) farei {
-        frente(200)
-        esperar(100)
-        rotacionar(500, 90)
-        tras(300)
-        esperar(150)
+        zerartemporizador()
         enquanto (ultra(3) > 30) farei {
             frente(250)
         }
+        tempoVoltar = temporizador()
         se (ultra(1) < 10) entao {
             parede()
             interromper()
@@ -73,96 +75,58 @@ tarefa  buscarVitima{
         parar()
         levantar(700)
         girarcima(1500)
+        tempoVoltar = tempoVoltar + 400
         interromper()
     }
 }
 
-tarefa  alinharArea1{
+tarefa  alinharAreaSegura{
     escrever(1, "Alinhamento da área 1")
-    se (direcao() > 316) entao {
-        enquanto(direcao() < 314 ou direcao() > 316)farei{
+    se (direcao() > triangulo + 1) entao {
+        enquanto(direcao() < triangulo - 1 ou direcao() > triangulo + 1)farei{
             esquerda(1000)
         }
     }
     senao{
-        enquanto(direcao() < 314 ou direcao() > 316)farei{
+        enquanto(direcao() < triangulo - 1 ou direcao() > triangulo + 1)farei{
             direita(1000)
         }
     }
     
-    enquanto(direcao() < 44 ou direcao() > 46) farei{
-        direita(1000)
+    alvo = triangulo + 90
+    se (alvo > 360) entao {
+        alvo = alvo - 360
     }
+
+    direcaoAtual = direcao()
+    enquanto(direcaoAtual < alvo - 1 ou direcaoAtual > alvo + 1) farei{
+        direita(1000)
+        direcaoAtual = direcao()
+    }
+    parar()
+
     enquanto (ultra(1) > 10) farei {
         frente(250)
     }
     parar()
 
-    enquanto(direcao() < 89 ou direcao() > 91) farei{
-        direita(1000)
+    enquanto (ultra(1) < 70) farei {
+        tras(250)
     }
     parar()
-}
-
-tarefa  alinharArea2{
-    escrever(1, "Alinhamento da área 2")
-    se (direcao() > 46) entao {
-        enquanto(direcao() < 44 ou direcao() > 46)farei{
-            esquerda(1000)
-        }
-    }
-    senao{
-        enquanto(direcao() < 44 ou direcao() > 46)farei{
-            direita(1000)
-        }
-    }
-    
-    enquanto(direcao() < 134 ou direcao() > 136) farei{
-        direita(1000)
-    }
-    enquanto (ultra(1) > 10) farei {
-        frente(250)
-    }
-    parar()
-
-    enquanto(direcao() < 179 ou direcao() > 181) farei{
-        direita(1000)
-    }
-    parar()
-}
-
-tarefa  alinharArea3{
-    escrever(1, "Alinhamento da área 3")
-    se (direcao() > 226) entao {
-        enquanto(direcao() < 224 ou direcao() > 226)farei{
-            esquerda(1000)
-        }
-    }
-    senao{
-        enquanto(direcao() < 224 ou direcao() > 226)farei{
-            direita(1000)
-        }
-    }
-    
-    enquanto(direcao() < 314 ou direcao() > 316) farei{
-        direita(1000)
-    }
-    enquanto (ultra(1) > 10) farei {
-        frente(250)
-    }
-    parar()
-
-    enquanto(direcao() < 1 ou direcao() > 3) farei{
-        direita(1000)
-    }
-    parar()
+    direita(1000)
+    esperar(200)
 }
 
 tarefa levarVitima {
     escrever(1, "Levando vítima")
     direcaoAtual = direcao()
-    enquanto(direcaoAtual < triangulo -2 ou direcaoAtual > triangulo + 2) farei {
-        direita(1000)
+    retorno = alinhamentoBusca + 180
+    se (retorno > 360) entao {
+        retorno = retorno - 360
+    }
+    enquanto(direcaoAtual < retorno -2 ou direcaoAtual > retorno + 2) farei {
+        esquerda(1000)
         direcaoAtual = direcao()
     }
     parar()
@@ -184,13 +148,5 @@ tarefa levarVitima {
     esperar(200)
     levantar(700)
     girarbaixo(1400)
-    se(triangulo > 270)entao{
-        alinharArea1()
-    }
-    se(triangulo < 90)entao{
-        alinharArea2()
-    }
-    se(triangulo > 180 e triangulo < 270)entao{
-        alinharArea3()
-    }
+    alinharAreaSegura()
 }
