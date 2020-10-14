@@ -81,7 +81,7 @@ tarefa  buscarVitima{
 }
 
 tarefa  alinharAreaSegura{
-    escrever(1, "Alinhamento da área 1")
+    escrever(1, "Alinhamento da área segura")
     se (direcao() > triangulo + 1) entao {
         enquanto(direcao() < triangulo - 1 ou direcao() > triangulo + 1)farei{
             esquerda(1000)
