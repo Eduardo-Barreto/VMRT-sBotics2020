@@ -61,14 +61,14 @@ levantar(600)
             curvaEsquerda()
         }
 
-        se (cor(1) == "VERDE" ou cor(2) == "VERDE") entao {
+        se (cor(1) == "VERDE" ou cor(2) == "VERDE" ou cor(1) == "AMARELO" ou cor(2) == "AMARELO") entao {
             escrever(2, "VERDE")
             frente(150)
             esperar(750)
             curvaDireitaVerde()
         }
 
-        se (cor(4) == "VERDE" ou cor(5) == "VERDE") entao {
+        se (cor(4) == "VERDE" ou cor(5) == "VERDE" ou cor(4) == "AMARELO" ou cor(5) == "AMARELO") entao {
             escrever(2, "VERDE")
             frente(150)
             esperar(750)
