@@ -28,20 +28,22 @@ tarefa vitimaEntrada{
 
 tarefa desviarVitima{
     escrever(1, "Desviando da vítima, procurando área segura")
-    se (resto(contador, 3) == 0) entao {
-        rotacionar (500, 25)
-        frente(250)
-        esperar(800)
-        rotacionar (500, 0-25)
+    se(luz(6) > 13) entao{
+        se (resto(contador, 3) == 0) entao {
+            rotacionar (500, 25)
+            frente(250)
+            esperar(800)
+            rotacionar (500, 0-25)
+        }
+        senao{
+            rotacionar (500, 0-25)
+            frente(250)
+            esperar(800)
+            rotacionar (500, 25)
+        }
+        contador = contador+1
+        alvo = alvo + 2000
     }
-    senao{
-        rotacionar (500, 0-25)
-        frente(250)
-        esperar(800)
-        rotacionar (500, 25)
-    }
-    contador = contador+1
-    alvo = alvo + 2000
 }
 
 tarefa parede {
