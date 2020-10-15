@@ -76,7 +76,7 @@ tarefa seguirLinha{
         esquerda(1000)
     }
     se(cor(3) == "PRETO")entao{
-        escrever(1, "continue a nadar, continue a nadar...")
+        escrever(1, "3 na linha, continue a nadar, continue a nadar...")
         frente(100)
     }
     se(cor(1) == "BRANCO" e cor(2) == "BRANCO" e cor(4) == "BRANCO" e cor(5) == "BRANCO")entao{
