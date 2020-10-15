@@ -47,7 +47,7 @@ se (luz(6) < 12) entao {
     enquanto (verdadeiro) farei {
         direcaoAtual = direcao()
         diferencaUltra = ultra(1) - ultra(3)
-        enquanto (diferencaUltra < 15 ou ultra(1) > 900) farei {
+        enquanto (diferencaUltra < 17 ou ultra(1) > 900) farei {
             direcaoAtual = direcao()
             se (direcaoAtual < distanciaParede + 1 e direcaoAtual > distanciaParede - 1) entao {
                 parede()
@@ -124,7 +124,7 @@ senao{
         enquanto (verdadeiro) farei {
             direcaoAtual = direcao()
             diferencaUltra = ultra(1) - ultra(3)
-            enquanto (diferencaUltra < 15 ou ultra(1) > 900) farei {
+            enquanto (diferencaUltra < 17 ou ultra(1) > 900) farei {
                 direcaoAtual = direcao()
                 se (direcaoAtual < distanciaParede + 1 e direcaoAtual > distanciaParede - 1) entao {
                     parede()
@@ -201,7 +201,7 @@ senao{
             enquanto (verdadeiro) farei {
                 direcaoAtual = direcao()
                 diferencaUltra = ultra(1) - ultra(3)
-                enquanto (diferencaUltra < 15 ou ultra(1) > 900) farei {
+                enquanto (diferencaUltra < 17 ou ultra(1) > 900) farei {
                     direcaoAtual = direcao()
                     se (direcaoAtual < distanciaParede + 1 e direcaoAtual > distanciaParede - 1) entao {
                         parede()
