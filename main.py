@@ -1,7 +1,5 @@
 import os
 
-os.system('code --install-extension maptz.regionfolder')
-
 file_name = input('Digite o nome do arquivo final (sem a extensão): ')
 
 
