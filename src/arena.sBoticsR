@@ -1,4 +1,9 @@
 inicio
+zerartemporizador()
+enquanto (temporizador() < 300 ou toque(1)) farei {
+    tras(300)
+}
+parar()
 velocidadeatuador(150)
 girarcima(600)
 levantar(600)
@@ -51,32 +56,20 @@ levantar(600)
 
     #------------------CURVAS-------------------
     #------------------VERDE---------------------
-        
-        se (cor(2) == "VERDE" e cor(4) == "VERDE") entao {
-            escrever(2, "beco")
-            frente(150)
-            esperar(400)
-            esquerda(1000)
-            esperar(3420)
-            curvaEsquerda()
-        }
-
+    
         se (cor(1) == "VERDE" ou cor(2) == "VERDE" ou cor(1) == "AMARELO" ou cor(2) == "AMARELO") entao {
-            escrever(2, "VERDE")
             frente(150)
             esperar(750)
             curvaDireitaVerde()
         }
 
         se (cor(4) == "VERDE" ou cor(5) == "VERDE" ou cor(4) == "AMARELO" ou cor(5) == "AMARELO") entao {
-            escrever(2, "VERDE")
             frente(150)
             esperar(750)
             curvaEsquerdaVerde()
         }
     #-------------------PRETO---------------------
         se (cor(1) == "PRETO" e cor(2) == "PRETO") entao {
-            escrever(2, "PRETO")
             verificaCurva()
             se (verCurva) entao {
                 curvaDireita()
@@ -84,7 +77,6 @@ levantar(600)
         }
 
         se (cor(4) == "PRETO" e cor(5) == "PRETO") entao {
-            escrever(2, "PRETO")
             verificaCurva()
             se (verCurva) entao {
                 curvaEsquerda()
