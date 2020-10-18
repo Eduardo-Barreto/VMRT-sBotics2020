@@ -1,4 +1,6 @@
 import os
+import datetime
+
 
 file_name = input('Digite o nome do arquivo final (sem a extensão): ')
 
@@ -11,6 +13,10 @@ while True:
         os.mkdir('./output')
 
     out = open('./output/'+file_name+'.sBoticsR', 'w')
+
+    data = datetime.datetime.now()
+
+    out.write('#Ofere.ci.mentos\n#SESI VMRT - SP\n#Last change: ' + str(data.strftime("%d")) + '/' + str(data.strftime("%m")) + '/' + str(data.strftime("%Y")) + ' | ' + str(data.strftime("%X")) + '\n\n')
 
     os.system('cls')
 
