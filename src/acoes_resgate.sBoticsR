@@ -134,9 +134,6 @@ tarefa levarVitima {
     parar()
     enquanto(cor(6) != "PRETO" ou ultra(1) > 75)farei{
         frente(150)
-        se (ultra(3) < 6) entao {
-            desviarVitima()
-        }
     }
     parar()
     baixar(700)
