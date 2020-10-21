@@ -4,8 +4,8 @@ numero contador = 0
 
 tarefa curvaEsquerda{
     escrever(1, "Curva pra Esquerda no preto")
-    frente(100)
-    esperar(150)
+    frente(200)
+    esperar(75)
     esquerda(1000)
     esperar(500)
 
@@ -13,15 +13,15 @@ tarefa curvaEsquerda{
     enquanto (cor(3) != "PRETO" e temporizador() <= 2435) farei {
         esquerda(1000)
     }
-    tras(100)
-    esperar(250)
+    tras(200)
+    esperar(125)
     limparconsole()
 }
 
 tarefa curvaDireita{
     escrever(1, "Curva pra Direita no preto")
-    frente(100)
-    esperar(150)
+    frente(200)
+    esperar(75)
     direita(1000)
     esperar(500)
 
@@ -29,15 +29,15 @@ tarefa curvaDireita{
     enquanto (cor(3) != "PRETO" e temporizador() <= 2435) farei {
         direita(1000)
     }
-    tras(100)
-    esperar(250)
+    tras(200)
+    esperar(125)
     limparconsole()
 }
 
 tarefa curvaEsquerdaVerde {
     escrever(1, "Curva pra Esquerda no verde")
-    frente(100)
-    esperar(150)
+    frente(200)
+    esperar(75)
     esquerda(1000)
     esperar(1000)
 
@@ -45,15 +45,15 @@ tarefa curvaEsquerdaVerde {
     enquanto (cor(3) != "PRETO" e temporizador() <= 2400) farei {
         esquerda(1000)
     }
-    tras(100)
-    esperar(400)
+    tras(200)
+    esperar(200)
     limparconsole()
 }
 
 tarefa curvaDireitaVerde {
     escrever(1, "Curva pra Direita no verde")
-    frente(100)
-    esperar(150)
+    frente(200)
+    esperar(75)
     direita(1000)
     esperar(1000)
 
@@ -61,8 +61,8 @@ tarefa curvaDireitaVerde {
     enquanto (cor(3) != "PRETO" e temporizador() <= 2400) farei {
         direita(1000)
     }
-    tras(100)
-    esperar(400)
+    tras(200)
+    esperar(200)
     limparconsole()
 }
 

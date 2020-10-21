@@ -50,7 +50,7 @@ se (luz(6) < 12) entao {
         enquanto (diferencaUltra < 17 ou ultra(1) > 900) farei {
             direcaoAtual = direcao()
             se (direcaoAtual < distanciaParede + 1 e direcaoAtual > distanciaParede - 1) entao {
-                parede()
+                alinharAreaSegura()
             }
             direita(1000)
             diferencaUltra = ultra(1) - ultra(3)
@@ -129,7 +129,7 @@ senao{
             enquanto (diferencaUltra < 17 ou ultra(1) > 900) farei {
                 direcaoAtual = direcao()
                 se (direcaoAtual < distanciaParede + 1 e direcaoAtual > distanciaParede - 1) entao {
-                    parede()
+                    alinharAreaSegura()
                 }
                 direita(1000)
                 diferencaUltra = ultra(1) - ultra(3)
@@ -206,7 +206,7 @@ senao{
                 enquanto (diferencaUltra < 17 ou ultra(1) > 900) farei {
                     direcaoAtual = direcao()
                     se (direcaoAtual < distanciaParede + 1 e direcaoAtual > distanciaParede - 1) entao {
-                        parede()
+                        alinharAreaSegura()
                     }
                     direita(1000)
                     diferencaUltra = ultra(1) - ultra(3)

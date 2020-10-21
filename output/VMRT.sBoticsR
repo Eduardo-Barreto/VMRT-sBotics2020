@@ -1,14 +1,14 @@
 #Ofere.ci.mentos
 #SESI VMRT - SP
-#Last change: 20/10/2020 | 22:32:14
+#Last change: 20/10/2020 | 22:57:28
 
 numero angulo = 0
 booleano verCurva = falso
 numero contador = 0
 
 tarefa curvaEsquerda{
-    frente(100)
-    esperar(150)
+    frente(200)
+    esperar(75)
     esquerda(1000)
     esperar(500)
 
@@ -16,14 +16,14 @@ tarefa curvaEsquerda{
     enquanto (cor(3) != "PRETO" e temporizador() <= 2435) farei {
         esquerda(1000)
     }
-    tras(100)
-    esperar(250)
+    tras(200)
+    esperar(125)
     limparconsole()
 }
 
 tarefa curvaDireita{
-    frente(100)
-    esperar(150)
+    frente(200)
+    esperar(75)
     direita(1000)
     esperar(500)
 
@@ -31,14 +31,14 @@ tarefa curvaDireita{
     enquanto (cor(3) != "PRETO" e temporizador() <= 2435) farei {
         direita(1000)
     }
-    tras(100)
-    esperar(250)
+    tras(200)
+    esperar(125)
     limparconsole()
 }
 
 tarefa curvaEsquerdaVerde {
-    frente(100)
-    esperar(150)
+    frente(200)
+    esperar(75)
     esquerda(1000)
     esperar(1000)
 
@@ -46,14 +46,14 @@ tarefa curvaEsquerdaVerde {
     enquanto (cor(3) != "PRETO" e temporizador() <= 2400) farei {
         esquerda(1000)
     }
-    tras(100)
-    esperar(400)
+    tras(200)
+    esperar(200)
     limparconsole()
 }
 
 tarefa curvaDireitaVerde {
-    frente(100)
-    esperar(150)
+    frente(200)
+    esperar(75)
     direita(1000)
     esperar(1000)
 
@@ -61,8 +61,8 @@ tarefa curvaDireitaVerde {
     enquanto (cor(3) != "PRETO" e temporizador() <= 2400) farei {
         direita(1000)
     }
-    tras(100)
-    esperar(400)
+    tras(200)
+    esperar(200)
     limparconsole()
 }
 
@@ -197,11 +197,6 @@ tarefa desviarVitima{
     }
 }
 
-tarefa parede {
-    rotacionar (500, 90)
-    distanciaParede = 140
-}
-
 tarefa  buscarVitima{
     alinhamentoBusca = direcao()
     tras(200)
@@ -213,7 +208,6 @@ tarefa  buscarVitima{
         }
         tempoVoltar = temporizador()
         se (ultra(1) < 10) entao {
-            parede()
             interromper()
         }
         parar()
@@ -444,7 +438,7 @@ se (luz(6) < 12) entao {
         enquanto (diferencaUltra < 17 ou ultra(1) > 900) farei {
             direcaoAtual = direcao()
             se (direcaoAtual < distanciaParede + 1 e direcaoAtual > distanciaParede - 1) entao {
-                parede()
+                alinharAreaSegura()
             }
             direita(1000)
             diferencaUltra = ultra(1) - ultra(3)
@@ -517,7 +511,7 @@ senao{
             enquanto (diferencaUltra < 17 ou ultra(1) > 900) farei {
                 direcaoAtual = direcao()
                 se (direcaoAtual < distanciaParede + 1 e direcaoAtual > distanciaParede - 1) entao {
-                    parede()
+                    alinharAreaSegura()
                 }
                 direita(1000)
                 diferencaUltra = ultra(1) - ultra(3)
@@ -588,7 +582,7 @@ senao{
                 enquanto (diferencaUltra < 17 ou ultra(1) > 900) farei {
                     direcaoAtual = direcao()
                     se (direcaoAtual < distanciaParede + 1 e direcaoAtual > distanciaParede - 1) entao {
-                        parede()
+                        alinharAreaSegura()
                     }
                     direita(1000)
                     diferencaUltra = ultra(1) - ultra(3)

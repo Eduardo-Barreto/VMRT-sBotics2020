@@ -46,12 +46,6 @@ tarefa desviarVitima{
     }
 }
 
-tarefa parede {
-    escrever(1, "Ops, parede!")
-    rotacionar (500, 90)
-    distanciaParede = 140
-}
-
 tarefa  buscarVitima{
     escrever(1, "Possível vítima, indo verificar")
     alinhamentoBusca = direcao()
@@ -64,7 +58,6 @@ tarefa  buscarVitima{
         }
         tempoVoltar = temporizador()
         se (ultra(1) < 10) entao {
-            parede()
             interromper()
         }
         parar()
