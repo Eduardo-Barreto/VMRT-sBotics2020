@@ -85,5 +85,4 @@ levantar(600)
 
     #--------------------SEGUIDOR-----------------
         seguirLinha()
-
     }

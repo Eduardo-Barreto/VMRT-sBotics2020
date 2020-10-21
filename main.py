@@ -23,11 +23,11 @@ while True:
     for source_file in directory:
         if 'sBoticsR' in source_file:
             current_file = open('./src/' + source_file, 'r')
-            out.write('#region ' +
-                      source_file[:source_file.find('.sBoticsR')] +
-                      '\n')
             for line in current_file:
-                out.write('\t' + line)
+                if '#' not in line:
+                    if 'escrever' not in line:
+                        if line != '':
+                            out.write(line)
             current_file.close()
             out.write('\n#endregion\n\n')
 

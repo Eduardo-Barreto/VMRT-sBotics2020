@@ -82,10 +82,10 @@ se (luz(6) < 12) entao {
             }
             senao{
                 escrever(1, "Muito perto")
-                frente(200)
-                esperar(200)
-                tras(200)
-                esperar(200)
+                frente(300)
+                esperar(300)
+                tras(300)
+                esperar(300)
             }
         }
     }

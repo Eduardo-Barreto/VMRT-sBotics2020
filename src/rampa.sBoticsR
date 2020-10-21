@@ -3,10 +3,10 @@
     baixar(600)
 
     enquanto (ultra(2)>20) farei {
-        seguirLinha()
+        seguirLinhaRampa()
     }
     enquanto (ultra(2)<20) farei {
-        seguirLinha()
+        seguirLinhaRampa()
     }
     parar()
     limparconsole()

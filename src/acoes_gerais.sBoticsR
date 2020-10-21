@@ -42,11 +42,11 @@ tarefa curvaEsquerdaVerde {
     esperar(1000)
 
     zerartemporizador()
-    enquanto (cor(3) != "PRETO" e temporizador() <= 2435) farei {
+    enquanto (cor(3) != "PRETO" e temporizador() <= 2400) farei {
         esquerda(1000)
     }
     tras(100)
-    esperar(350)
+    esperar(400)
     limparconsole()
 }
 
@@ -58,11 +58,11 @@ tarefa curvaDireitaVerde {
     esperar(1000)
 
     zerartemporizador()
-    enquanto (cor(3) != "PRETO" e temporizador() <= 2435) farei {
+    enquanto (cor(3) != "PRETO" e temporizador() <= 2400) farei {
         direita(1000)
     }
     tras(100)
-    esperar(350)
+    esperar(400)
     limparconsole()
 }
 
@@ -81,6 +81,24 @@ tarefa seguirLinha{
     se(cor(1) == "BRANCO" e cor(2) == "BRANCO" e cor(4) == "BRANCO" e cor(5) == "BRANCO")entao{
         escrever(1, "continue a nadar, continue a nadar...")
         frente(115)
+    }
+}
+
+tarefa seguirLinhaRampa{
+
+    se(cor(1) == "PRETO" ou cor(2) == "PRETO")entao{
+        escrever(1, "um tequinho pra direita")
+        direita(1000)
+    }
+
+    se(cor(4) == "PRETO" ou cor(5) == "PRETO")entao{
+        escrever(1, "um tequinho pra esquerda")
+        esquerda(1000)
+    }
+
+    se(cor(1) == "BRANCO" e cor(2) == "BRANCO" e cor(4) == "BRANCO" e cor(5) == "BRANCO")entao{
+        escrever(1, "continue a nadar, continue a nadar...")
+        frente(250)
     }
 }
 
