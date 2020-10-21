@@ -290,6 +290,7 @@ tarefa levarVitima {
     alinharAreaSegura()
 }
 inicio
+escrever(1, "https://github.com/Eduardo-Barreto/VMRT-sBotics")
 zerartemporizador()
 enquanto (temporizador() < 300 ou toque(1)) farei {
     tras(300)
