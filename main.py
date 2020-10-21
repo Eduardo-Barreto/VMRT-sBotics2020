@@ -17,6 +17,8 @@ while True:
     data = datetime.datetime.now()
 
     out.write('#Ofere.ci.mentos\n#SESI VMRT - SP\n#Last change: ' + str(data.strftime("%d")) + '/' + str(data.strftime("%m")) + '/' + str(data.strftime("%Y")) + ' | ' + str(data.strftime("%X")) + '\n\n')
+    out.write('#Disponivel em: https://github.com/Eduardo-Barreto/VMRT-sBotics\n')
+    out.write('#'+'-'*100+'\n')
 
     os.system('cls')
 
@@ -38,6 +40,9 @@ while True:
               'compilado com sucesso', '-'*20)
 
     out.write('fim\n')
+    out.write('#'+'-'*100)
+    out.write('\n#Ofere.ci.mentos\n#SESI VMRT - SP\n#Last change: ' + str(data.strftime("%d")) + '/' + str(data.strftime("%m")) + '/' + str(data.strftime("%Y")) + ' | ' + str(data.strftime("%X")) + '\n\n')
+    out.write('#Disponivel em: https://github.com/Eduardo-Barreto/VMRT-sBotics')
     out.close()
     print('\nDigite compilar para compilar novamente\n')
     while input() != 'compilar':

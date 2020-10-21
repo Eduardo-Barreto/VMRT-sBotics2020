@@ -1,7 +1,9 @@
 #Ofere.ci.mentos
 #SESI VMRT - SP
-#Last change: 20/10/2020 | 22:57:28
+#Last change: 21/10/2020 | 12:49:39
 
+#Disponivel em: https://github.com/Eduardo-Barreto/VMRT-sBotics
+#----------------------------------------------------------------------------------------------------
 numero angulo = 0
 booleano verCurva = falso
 numero contador = 0
@@ -621,3 +623,9 @@ senao{
 #endregion
 
 fim
+#----------------------------------------------------------------------------------------------------
+#Ofere.ci.mentos
+#SESI VMRT - SP
+#Last change: 21/10/2020 | 12:49:39
+
+#Disponivel em: https://github.com/Eduardo-Barreto/VMRT-sBotics
