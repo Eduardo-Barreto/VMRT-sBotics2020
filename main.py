@@ -28,8 +28,9 @@ while True:
             for line in current_file:
                 if '#' not in line:
                     if 'escrever' not in line:
-                        if line != '':
-                            out.write(line)
+                        if 'limparconsole' not in line:
+                            if line != '':
+                                out.write(line)
             current_file.close()
 
         else:

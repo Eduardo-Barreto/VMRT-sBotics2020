@@ -1,6 +1,6 @@
 #Ofere.ci.mentos
 #SESI VMRT - SP
-#Last change: 21/10/2020 | 13:03:37
+#Last change: 21/10/2020 | 13:52:09
 
 #Disponivel em: https://github.com/Eduardo-Barreto/VMRT-sBotics
 #----------------------------------------------------------------------------------------------------
@@ -20,7 +20,6 @@ tarefa curvaEsquerda{
     }
     tras(200)
     esperar(125)
-    limparconsole()
 }
 
 tarefa curvaDireita{
@@ -35,7 +34,6 @@ tarefa curvaDireita{
     }
     tras(200)
     esperar(125)
-    limparconsole()
 }
 
 tarefa curvaEsquerdaVerde {
@@ -50,7 +48,6 @@ tarefa curvaEsquerdaVerde {
     }
     tras(200)
     esperar(200)
-    limparconsole()
 }
 
 tarefa curvaDireitaVerde {
@@ -65,7 +62,6 @@ tarefa curvaDireitaVerde {
     }
     tras(200)
     esperar(200)
-    limparconsole()
 }
 
 tarefa seguirLinha{
@@ -290,7 +286,7 @@ tarefa levarVitima {
     alinharAreaSegura()
 }
 inicio
-escrever(1, "https://github.com/Eduardo-Barreto/VMRT-sBotics")
+escrever(2, "https://github.com/Eduardo-Barreto")
 zerartemporizador()
 enquanto (temporizador() < 300 ou toque(1)) farei {
     tras(300)
@@ -370,7 +366,6 @@ levantar(600)
 
         seguirLinha()
     }
-    limparconsole()
     baixar(600)
 
     enquanto (ultra(2)>20) farei {
@@ -380,7 +375,7 @@ levantar(600)
         seguirLinhaRampa()
     }
     parar()
-    limparconsole()
+
 parar()
 
 se (inclinacao() > 347 e inclinacao() < 349) entao {
@@ -612,6 +607,6 @@ senao{
 #----------------------------------------------------------------------------------------------------
 #Ofere.ci.mentos
 #SESI VMRT - SP
-#Last change: 21/10/2020 | 13:03:37
+#Last change: 21/10/2020 | 13:52:09
 
 #Disponivel em: https://github.com/Eduardo-Barreto/VMRT-sBotics
