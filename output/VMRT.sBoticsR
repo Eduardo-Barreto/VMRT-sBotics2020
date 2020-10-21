@@ -1,6 +1,6 @@
 #Ofere.ci.mentos
 #SESI VMRT - SP
-#Last change: 21/10/2020 | 12:49:39
+#Last change: 21/10/2020 | 13:03:37
 
 #Disponivel em: https://github.com/Eduardo-Barreto/VMRT-sBotics
 #----------------------------------------------------------------------------------------------------
@@ -150,10 +150,7 @@ tarefa ajuste{
         angulo = 360 - direcao()
         rotacionar(500, angulo)
     }
-}
-#endregion
-
-numero direcaoAtual = 0
+}numero direcaoAtual = 0
 numero triangulo = 0
 numero alvo = 0
 numero distanciaParede = 0
@@ -292,9 +289,6 @@ tarefa levarVitima {
     girarbaixo(1400)
     alinharAreaSegura()
 }
-
-#endregion
-
 inicio
 zerartemporizador()
 enquanto (temporizador() < 300 ou toque(1)) farei {
@@ -375,9 +369,6 @@ levantar(600)
 
         seguirLinha()
     }
-
-#endregion
-
     limparconsole()
     baixar(600)
 
@@ -389,9 +380,6 @@ levantar(600)
     }
     parar()
     limparconsole()
-#endregion
-
-
 parar()
 
 se (inclinacao() > 347 e inclinacao() < 349) entao {
@@ -619,13 +607,10 @@ senao{
             }
         }
     }
-}
-#endregion
-
-fim
+}fim
 #----------------------------------------------------------------------------------------------------
 #Ofere.ci.mentos
 #SESI VMRT - SP
-#Last change: 21/10/2020 | 12:49:39
+#Last change: 21/10/2020 | 13:03:37
 
 #Disponivel em: https://github.com/Eduardo-Barreto/VMRT-sBotics

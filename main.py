@@ -31,7 +31,6 @@ while True:
                         if line != '':
                             out.write(line)
             current_file.close()
-            out.write('\n#endregion\n\n')
 
         else:
             print('-'*20, 'Arquivo inválido:', source_file, '-'*20, end='')
