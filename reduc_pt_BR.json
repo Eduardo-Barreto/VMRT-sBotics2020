@@ -18,7 +18,7 @@
         "id": 2,
         "name": "mover",
         "code": "mover()",
-        "description": "oi gab, atualizou?",
+        "description": "oi json, atualizou?",
         "type": "Movimentação",
         "return_type": "Void",
         "parameters": {
