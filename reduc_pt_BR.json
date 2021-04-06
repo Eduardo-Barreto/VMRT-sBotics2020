@@ -24,8 +24,9 @@
         "parameters": {
           "esquerda": "int",
           "direita": "int"
-        },
-      {
+        }
+      },
+        {
         "id": 3,
         "name": "ganharobr",
         "code": "ganharobr()",
