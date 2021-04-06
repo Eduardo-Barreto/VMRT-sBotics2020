@@ -7,7 +7,7 @@
         "id": 1,
         "name": "esperar",
         "code": "esperar()",
-        "description": "Espera de um tempo em milissegundos antes de executar o próximo comando. Os valores devem ser sempre inteiros maiores que 0.",
+        "description": "esse aqui é reduc_en julio!!!!!",
         "type": "Outros",
         "return_type": "Void",
         "parameters": {
@@ -18,7 +18,7 @@
         "id": 2,
         "name": "mover",
         "code": "mover()",
-        "description": "sei la mano ela move!",
+        "description": "esse tbm é reduc en!!!",
         "type": "Movimentação",
         "return_type": "Void",
         "parameters": {
