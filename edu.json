@@ -7,23 +7,11 @@
         "id": 1,
         "name": "abacate",
         "code": "abacate()",
-        "description": "aaeuaeaeblauelaue",
+        "description": "MUDA AI VSCODE NAMORAL CARA",
         "type": "Outros",
         "return_type": "int",
         "parameters": {
           "time": "int"
-        }
-      },
-      {
-        "id": 2,
-        "name": "mover",
-        "code": "mover()",
-        "description": "block edu",
-        "type": "Movimentação",
-        "return_type": "Void",
-        "parameters": {
-          "esquerda": "int",
-          "direita": "int"
         }
       }
     ]
