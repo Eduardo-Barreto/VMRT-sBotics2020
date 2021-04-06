@@ -18,7 +18,7 @@
         "id": 2,
         "name": "mover",
         "code": "mover()",
-        "description": "eu sou uma cebola",
+        "description": "oi gab, atualizou?",
         "type": "Movimentação",
         "return_type": "Void",
         "parameters": {
