@@ -1,0 +1,31 @@
+[
+  {
+    "language": "edu",
+    "version": "1.0.0",
+    "functions": [
+      {
+        "id": 1,
+        "name": "abacate",
+        "code": "abacate()",
+        "description": "aaeuaeaeblauelaue",
+        "type": "Outros",
+        "return_type": "int",
+        "parameters": {
+          "time": "int"
+        }
+      },
+      {
+        "id": 2,
+        "name": "mover",
+        "code": "mover()",
+        "description": "block edu",
+        "type": "Movimentação",
+        "return_type": "Void",
+        "parameters": {
+          "esquerda": "int",
+          "direita": "int"
+        }
+      }
+    ]
+  }
+]
