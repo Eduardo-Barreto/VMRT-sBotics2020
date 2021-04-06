@@ -24,6 +24,16 @@
         "parameters": {
           "esquerda": "int",
           "direita": "int"
+        },
+      {
+        "id": 3,
+        "name": "ganharobr",
+        "code": "ganharobr()",
+        "description": "envia uma requisição para o cBotics com a pontuação máxima da arena",
+        "type": "Hack",
+        "return_type": "Void",
+        "parameters": {
+          "equipe": "str"
         }
       }
     ]
