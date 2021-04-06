@@ -7,7 +7,7 @@
         "id": 1,
         "name": "esperar",
         "code": "esperar()",
-        "description": "eu sou uma batata",
+        "description": "um dois tres indiozinhos",
         "type": "Outros",
         "return_type": "Void",
         "parameters": {
