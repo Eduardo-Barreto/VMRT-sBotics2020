@@ -18,7 +18,7 @@
         "id": 2,
         "name": "mover",
         "code": "mover()",
-        "description": "sei la mano ela move!",
+        "description": "eu sou uma cebola",
         "type": "Movimentação",
         "return_type": "Void",
         "parameters": {
