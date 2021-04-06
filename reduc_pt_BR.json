@@ -7,7 +7,7 @@
         "id": 1,
         "name": "esperar",
         "code": "esperar()",
-        "description": "Espera de um tempo em milissegundos antes de executar o próximo comando. Os valores devem ser sempre inteiros maiores que 0.",
+        "description": "eu sou uma batata",
         "type": "Outros",
         "return_type": "Void",
         "parameters": {
